@@ -23,6 +23,10 @@ def home():
 def produtos():
     return render_template('produtos.html',produtos=msl.gera_produtos())
 
+@app.route("/contato")
+def contato():
+    return render_template('contatos.html')
+
 @app.route("/inserir", methods=['POST','GET'])
 def inserir():
     nome = request.form.get('nome')
