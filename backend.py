@@ -1,4 +1,4 @@
-def insere_prod(produto, valor, img, promo,delete):
+def insere_prod(produto, valor, img, promo,delete,marca):
     import mysql.connector
 
 
@@ -34,7 +34,7 @@ def insere_prod(produto, valor, img, promo,delete):
                 cursor.execute(f"UPDATE prod_info SET value = {valor}, promo = {promo} WHERE name = '{produto}'")
                 resposta = 'Produto Atualizado'
         else:
-            cursor.execute(f"INSERT INTO prod_info VALUES(0,'{produto}','{valor}','{img}','{promo}')")
+            cursor.execute(f"INSERT INTO prod_info VALUES(0,'{produto}','{valor}','{img}','{promo}','{marca}')")
             resposta = 'Produto Inserido'
 
         conn.commit()
@@ -78,7 +78,9 @@ def gera_produtos():
                 promot = '<p class="prm">Promoção!</p>'
             else:
                 promot = ''
-            produtos+=f"""<div class='searched' id='{row[1]}'>
+            produtos+=f"""
+            <div class='{row[5]}'>
+            <div class='searched' id='{row[1]}'>
 
                 <img src="data:image/jpeg;base64,{row[3]}" alt="">
                 <p class='prod_name'>{row[1]}</p>
@@ -88,6 +90,7 @@ def gera_produtos():
                 </svg> Fazer orçamento</p>
                 <p class="pointer2" id='{row[1]}' onclick='inserecarrinho(this.id,{row[2]})'>Adicionar ao carrinho</p>
 {promot}
+            </div>
             </div>"""
             
 

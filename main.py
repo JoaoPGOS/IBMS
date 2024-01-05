@@ -27,11 +27,16 @@ def produtos():
 def contato():
     return render_template('contatos.html')
 
+@app.route("/servicos")
+def servico():
+    return render_template('servicos.html')
+
 @app.route("/inserir", methods=['POST','GET'])
 def inserir():
     nome = request.form.get('nome')
     valor = request.form.get('valor')
     delete = request.form.get('delete')
+    marca = request.form.get('marca')
     if request.method == 'POST':
         file = request.files['arquivo']
         image_string = base64.b64encode(file.read()).decode('utf-8')
@@ -40,10 +45,10 @@ def inserir():
     promo = request.form.get('promocao')
     
     if nome != None:
-        res = msl.insere_prod(nome,valor,image_string,promo,delete)
-        return render_template('atualizarbase.html',nomes=f'{nome}',valor=valor,promo=promo, img=image_string,resp=res)
+        res = msl.insere_prod(nome,valor,image_string,promo,delete,marca)
+        return render_template('atualizarbase.html',nomes=f'{nome}',valor=valor,promo=promo, img=image_string,resp=res,marca=marca)
     else:
-        return render_template('atualizarbase.html',nomes=f'',valor='',promo='', img='',resp='Insira/Atualize/Delete o produto')
+        return render_template('atualizarbase.html',nomes=f'',valor='',promo='', img='',marca='', resp='Insira/Atualize/Delete o produto')
 
 
 
@@ -67,5 +72,5 @@ def attinsert():
     return render_template('atualizatabelas.html')
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8000)
+    app.run(debug=True,port=8000)
 

@@ -33,11 +33,12 @@ function downloadFile(fileUrl) {
 
 window.addEventListener('scroll', function() {
     if (window.scrollY > 100) {
-        document.querySelector('.navbar').style.background = '#111';
+        document.querySelector('.navbar').style.background = 'var(--color-navbar)';
     }else if(window.scrollY < 100){
         document.querySelector('.navbar').style.background = 'transparent';
     }
 });
+
 
 function send(name,value){
     textopadrao = `Bom dia, eu me interessei no produto ${name}, no valor de R$${value} e gostaria de fazer um orçamento.`
@@ -89,4 +90,61 @@ function search(value){
             document.getElementById(creu).style.display = 'block'
         }
     }
+}
+
+function filtroProhair(){
+    var proHairElements = document.querySelectorAll('.ProHair');
+    var nuanceElements = document.querySelectorAll('.Nuance');
+
+    if (proHairElements.length > 0) {
+        for (var i = 0; i < proHairElements.length; i++) {
+            proHairElements[i].style.display = 'block';
+        }
+    }
+
+    if (nuanceElements.length > 0) {
+        for (var i = 0; i < nuanceElements.length; i++) {
+            nuanceElements[i].style.display = 'none';
+        }
+    }
+    document.getElementById('pro_hair').style.border = '2px green solid'
+    document.getElementById('nuance_bt').style.border = 'none'
+}
+
+function filtroNuance(){
+    var proHairElements = document.querySelectorAll('.ProHair');
+    var nuanceElements = document.querySelectorAll('.Nuance');
+
+    if (proHairElements.length > 0) {
+        for (var i = 0; i < proHairElements.length; i++) {
+            proHairElements[i].style.display = 'none';
+        }
+    }
+
+    if (nuanceElements.length > 0) {
+        for (var i = 0; i < nuanceElements.length; i++) {
+            nuanceElements[i].style.display = 'block';
+        }
+    }
+    document.getElementById('pro_hair').style.border = 'none'
+    document.getElementById('nuance_bt').style.border = '2px green solid'
+}
+
+function limparfiltro(){
+    var proHairElements = document.querySelectorAll('.ProHair');
+    var nuanceElements = document.querySelectorAll('.Nuance');
+
+    if (proHairElements.length > 0) {
+        for (var i = 0; i < proHairElements.length; i++) {
+            proHairElements[i].style.display = 'block';
+        }
+    }
+
+    if (nuanceElements.length > 0) {
+        for (var i = 0; i < nuanceElements.length; i++) {
+            nuanceElements[i].style.display = 'block';
+        }
+    }
+    document.getElementById('pro_hair').style.border = 'none'
+    document.getElementById('nuance_bt').style.border = 'none'
 }

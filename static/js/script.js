@@ -19,7 +19,7 @@ function pararRolagem() {
 
 window.addEventListener('scroll', function() {
     if (window.scrollY > 100) {
-        document.querySelector('.navbar').style.background = '#111';
+        document.querySelector('.navbar').style.background = 'var(--color-navbar)';
     }else if(window.scrollY < 100){
         document.querySelector('.navbar').style.background = 'transparent';
     }
@@ -38,30 +38,27 @@ function produtoslink(){
 }
 
 
-document.getElementById("Contato").addEventListener("click", function() {
-    window.scrollTo({top:document.body.scrollHeight - 1050,
-        behavior: 'smooth'});
-});
+
 
 function promo(p){
     if(p == 'S'){
         document.getElementById('promocao').value = '1'
         S = document.getElementById('S')
-        S.style.background = 'var(--color-primary)'
-        S.style.color = 'var(--color-1)'
+        S.style.background = 'var(--color-1)'
+        S.style.color = 'var(--color-primary)'
 
         N = document.getElementById('N')
-        N.style.color = 'var(--color-primary)'
-        N.style.background = 'var(--color-1)'
+        N.style.color = 'var(--color-1)'
+        N.style.background = 'var(--color-primary)'
     }else{
         document.getElementById('promocao').value = '0'
         S = document.getElementById('S')
-        S.style.color = 'var(--color-primary)'
-        S.style.background = 'var(--color-1)'
+        S.style.color = 'var(--color-1)'
+        S.style.background = 'var(--color-primary)'
 
         N = document.getElementById('N')
-        N.style.background = 'var(--color-primary)'
-        N.style.color = 'var(--color-1)'
+        N.style.background = 'var(--color-1)'
+        N.style.color = 'var(--color-primary)'
     }
 }
 

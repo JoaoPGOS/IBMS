@@ -1,15 +1,26 @@
 *{
     font-family: 'Poppins', sans-serif;
 }
-:root{
+/* :root{
     --color-bc:#f3ffcf;
     --color-primary:#f2d680;
     --color-1: #da7a1b;
     --color-2:#bac9a9;
-    --color-3:rgba(17,17,17,0.9);;
+    --color-3:rgba(17,17,17,0.9);
     --color-text:#a65300;
 
-}
+} */
+:root{
+    --color-bc: #363636;
+    --color-primary:#ECECEC;
+    --color-1:#111;
+    --color-2:#D4D4D4;
+    --color-3:#D4D4D4;
+    --color-text:#757575;
+    --color-navbar:#111;
+
+} 
+
 body{
     background-color: var(--color-bc);
 }
@@ -35,10 +46,7 @@ body{
     gap: 10px;
     padding-right: 20px;
 }
-.navbar img{
-    background-color: #111;
-    border-radius: 20px;
-}
+
 .navbar a, .navbar p{
     font-weight: bold;
     text-decoration: none;
@@ -48,10 +56,10 @@ body{
 }
 .navbar a:hover, .navbar p:hover{
     transition: .5s;
-    color: var(--color-1);
+    color: var(--color-primary);
 }
 .active{
-    color: var(--color-1) !important;
+    color: var(--color-primary) !important;
 }
 .sideimages div{
     border-radius: 20px;
@@ -150,16 +158,23 @@ body::-webkit-scrollbar-thumb {
 
 .container .title{
     font-size: 23px;
-    color: var(--color-text);
+    color: var(--color-1);
     font-weight: bold;
     text-align: center;
 }
 
 .container .content{
     display: flex;
-    color: var(--color-text);
-    text-align: center;
-    
+    color: var(--color-1);
+    align-self: center;
+    max-width: 1050px;
+    text-align: justify;
+    gap: 2rem;
+    flex-direction: column;
+}
+.container .content video{
+    width: 300px;
+    align-self: center;
 }
 
 .sideimagesprom div{
@@ -173,36 +188,18 @@ body::-webkit-scrollbar-thumb {
     font-size: 16px;
     font-weight: bold;
 }
-.sideimagesprom div img, .sideimages div video{
-    height: 270px;
-}
-.sideimagesprom div p{
-    padding-left: 10px;
-    cursor: pointer;
-    transition: .5s;
-}
 
-.sideimagesprom div p:hover{
-    color: green;
-    transition: .5s;
-}
 
-.sideimagesprom{
-    border-radius: 15px;
-    background-color: var(--color-primary);
-}
 .box{
     display: flex;
     gap: 1rem;
     flex-direction: column;
-    background-color: rgba(17,17,17,0.9);
+    background-color: var(--color-3);
     padding: 20px;
     border-radius: 20px;
+    color: var(--color-1);
 }
-.box video{
-    width: 300px;
-    align-self: center;
-}
+
 
 .box iframe{
     display: flex;
@@ -212,7 +209,7 @@ body::-webkit-scrollbar-thumb {
   }
 
 #linkinsta, #linkwpp{
-    color: var(--color-primary);
+    color: var(--color-1);
     text-decoration: none;
     transition: .5s;
 }
@@ -222,7 +219,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 #linkwpp:hover{
-    color: green;
+    color: darkgreen;
     transition: .5s;
 }
 .caixa{
@@ -231,12 +228,21 @@ body::-webkit-scrollbar-thumb {
     flex-direction: column;
     gap: 1rem;
 }
-
+#img_home{
+    display: flex;
+    align-self: center;
+    width: 400px;
+    border-radius: 20px;
+}
 
 @media only screen and (min-width: 800px) {
-    .box video {
-        width: 700px;
-        align-self: center;
+    .container .content{
+        display: flex;
+        flex-direction: row;
+    }
+    .container .content video{
+        width: 600px;
+
     }
     .sideimagescontainerservices{
         display: flex;
@@ -268,23 +274,22 @@ body::-webkit-scrollbar-thumb {
         flex-direction: row;
         gap: 1rem;
     }
+    #img_home{
+        width: 800px;
+        border-radius: 20px;
+    }
 
 }
 
-.box .title, .box .content p{
-    color: var(--color-primary);
-}
 
 #title{
     font-size: 30px;
-    background-image: linear-gradient(to right, transparent, var(--color-1) 50%, transparent);
+    background-image: linear-gradient(to right, transparent, var(--color-primary) 50%, transparent);
     width: 100% !important;
     color: var(--color-bc);
 }
 
-.box p{
-    color: var(--color-primary);
-}
+
 
 
 form{
@@ -292,11 +297,11 @@ form{
     flex-direction: column;
     width: 400px;
     align-items: center;
-    background-color: var(--color-3);
+    background-color: var(--color-primary);
     padding: 20px;
     border-radius: 20px;
     gap: 1rem;
-    color: var(--color-primary);
+    color: var(--color-1);
     font-weight: bold;
 }
 
@@ -304,13 +309,13 @@ form input[type='text']{
     width: 300px;
     padding: 10px;
     border-radius: 20px;
-    border: solid 1px var(--color-primary);
+    border: solid 2px var(--color-1);
     font-weight: bold;
 }
 
 form button{
-    background-color: var(--color-1);
-    color: var(--color-primary);
+    background-color: var(--color-primary);
+    color: var(--color-1);
     border: none;
     border-radius: 15px;
     cursor: pointer;
@@ -320,14 +325,14 @@ form button{
     transition: .5s;
 }
 form #N{
-    color: var(--color-1);
-    background-color: var(--color-primary);
+    color: var(--color-primary);
+    background-color: var(--color-1);
 
 }
 
 form input[type='submit']{
-    background-color: var(--color-1);
-    color: var(--color-primary);
+    background-color: var(--color-primary);
+    color: var(--color-1);
     border: none;
     border-radius: 15px;
     cursor: pointer;
@@ -337,8 +342,8 @@ form input[type='submit']{
     transition: .5s;
 }
 form input[type='submit']:hover{
-    color: var(--color-1);
-    background-color: var(--color-primary);
+    color: var(--color-primary);
+    background-color: var(--color-1);
     transition: .5s;
 }
 form input[type='file']{
@@ -349,8 +354,8 @@ form input[type='file']{
 .caixa div{
     font-size: larger;
     font-weight: bold;
-    background-color: var(--color-3);
-    color: var(--color-primary);
+    background-color: var(--color-primary);
+    color: var(--color-1);
     width: 400px;
     padding: 20px;
     border-radius: 20px;
@@ -363,17 +368,15 @@ form input[type='file']{
     max-height: 500px;
 }
 .prodcontainer div{
-    background-color: var(--color-3);
+    background-color: var(--color-primary);
     padding: 15px;
     border-radius: 20px;
-    color: var(--color-primary);
+    color: var(--color-1);
     margin: 20px;
     transition: .5s;
-    border: 3px solid var(--color-1);
 }
 .prodcontainer div:hover{
     transition: .5s;
-    background-color: var(--color-3);
     padding: 20px;
     border-radius: 20px;
 }
@@ -382,7 +385,7 @@ form input[type='file']{
     transition: .5s;
 }
 .prodcontainer .pointer:hover{
-    color: greenyellow;
+    color: darkgreen;
     transition: .5s;
 }
 
@@ -391,7 +394,7 @@ form input[type='file']{
     transition: .5s;
 }
 .prodcontainer .pointer2:hover{
-    color: var(--color-1);
+    color: darkred;
     transition: .5s;
 }
 
@@ -406,7 +409,7 @@ form input[type='file']{
     display: flex;
     align-items: center;
     position: fixed;
-    background-color: var(--color-1);
+    background-color: var(--color-primary);
     color: #111;
     padding: 15px;
     border-radius: 20px;
@@ -416,9 +419,12 @@ form input[type='file']{
 
     flex-direction: column;
 }
-
-.carrinho svg:hover{
-    color: var(--color-primary);
+.carrinho #c:hover{
+    color:darkgreen;
+    cursor: pointer;
+}
+.carrinho #x:hover{
+    color: darkred;
     transition: .5s;
     cursor: pointer;
 }
@@ -452,47 +458,85 @@ form input[type='file']{
     transition: .5s;
 }
 
-#carrinhoorcamento:hover{
+.carrinho #carrinhoorcamento:hover{
     cursor: pointer;
-    color: greenyellow;
+    color: darkgreen !important;
     transition: .5s;
 }
 
 .pd{
     display: flex;
     gap: 1rem;
+    flex-direction: column;
+    color: var(--color-primary);
+    width: 300px;
 }
 .pd #pesquisa{
     color: #111;
     border-radius: 10px;
-    border: 2px solid var(--color-1);
+    border: none;
     padding: 10px;
 }
 .pd button{
     border-radius: 10px;
     padding: 10px;
-    border: 2px solid var(--color-1);
+    border: none;
     color: #111;
     transition: .5s;
 }
 .pd button:hover{
     cursor: pointer;
-    background-color: var(--color-primary);
+    background-color: var(--color-2);
     border-radius: 10px;
     padding: 10px;
-    border: 2px solid var(--color-1);
-    color: #111;
+    color: var(--color-1);
+    transition: .5s;
+}
+.filtros{
+    display: flex;
+    gap: 1rem;
+    color: var(--color-primary);
+}
+.filtros img{
+    width: 70px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: .2s;
+    height: 70px;
+}
+.filtros img:hover{
+    border: 2px solid green;
+    transition: .2s;
+}
+
+.filtros p:hover{
+    color: darkred;
+    cursor: pointer;
     transition: .5s;
 }
 
 .prod_name{
     font-size: 20px;
     font-weight: bolder;
-    color: var(--color-primary);
+    color: var(--color-1);
 }
 
 .prod_value{
     font-size: 20px;
     font-weight: bolder;
-    color: var(--color-primary);
+    color: var(--color-1);
+}
+
+.box .serv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.box .serv svg{
+    transition: .5s;
+    cursor: pointer;
+}
+.box .serv svg:hover{
+    color: darkgreen;
+    transition: .5s;
 }
