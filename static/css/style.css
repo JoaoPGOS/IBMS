@@ -231,7 +231,7 @@ body::-webkit-scrollbar-thumb {
 #img_home{
     display: flex;
     align-self: center;
-    width: 400px;
+    width: 300px;
     border-radius: 20px;
 }
 
