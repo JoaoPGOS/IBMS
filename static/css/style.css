@@ -1,23 +1,16 @@
 *{
     font-family: 'Poppins', sans-serif;
 }
-/* :root{
-    --color-bc:#f3ffcf;
-    --color-primary:#f2d680;
-    --color-1: #da7a1b;
-    --color-2:#bac9a9;
-    --color-3:rgba(17,17,17,0.9);
-    --color-text:#a65300;
-
-} */
 :root{
-    --color-bc: #363636;
-    --color-primary:#ECECEC;
-    --color-1:#111;
-    --color-2:#D4D4D4;
-    --color-3:#D4D4D4;
+
+    --color-bc: #ECECEC;
+    --color-primary:#111;
+    --color-1:#ECECEC;
+    --color-2:#ECECEC;
+    --color-3:#111;
     --color-text:#757575;
-    --color-navbar:#111;
+    --color-navbar:#363636;
+
 
 } 
 
@@ -37,7 +30,7 @@ body{
     margin: 0px;
     padding: 10px;
     z-index: 2;
-    background-color: transparent;
+    background-color: var(--color-navbar);
     
 }
 .navbar div{
@@ -47,19 +40,19 @@ body{
     padding-right: 20px;
 }
 
-.navbar a, .navbar p{
+.navbar a{
     font-weight: bold;
     text-decoration: none;
     color: var(--color-text);
     transition: .5s;
     cursor: pointer;
 }
-.navbar a:hover, .navbar p:hover{
+.navbar a:hover{
     transition: .5s;
-    color: var(--color-primary);
+    color: var(--color-2);
 }
 .active{
-    color: var(--color-primary) !important;
+    color: var(--color-2) !important;
 }
 .sideimages div{
     border-radius: 20px;
@@ -69,13 +62,13 @@ body{
     min-height: 300px;
     font-size: 13px;
     gap: 1rem;
-    color: var(--color-text);
+    color: var(--color-1);
     font-weight: bolder;
 }
 
 .sideimages{
     border-radius: 15px;
-    background-color: var(--color-primary);
+    background-color: var(--color-navbar);
     max-width: 500px;
 }
 
@@ -158,14 +151,14 @@ body::-webkit-scrollbar-thumb {
 
 .container .title{
     font-size: 23px;
-    color: var(--color-1);
+    color: var(--color-primary);
     font-weight: bold;
     text-align: center;
 }
 
 .container .content{
     display: flex;
-    color: var(--color-1);
+    color: var(--color-primary);
     align-self: center;
     max-width: 1050px;
     text-align: justify;
@@ -194,10 +187,12 @@ body::-webkit-scrollbar-thumb {
     display: flex;
     gap: 1rem;
     flex-direction: column;
-    background-color: var(--color-3);
+    /* background-color: var(--color-3); */
+    border-top:1.5px solid var(--color-3);
+    border-bottom: 1.5px solid var(--color-3);
     padding: 20px;
     border-radius: 20px;
-    color: var(--color-1);
+    color: var(--color-primary);
 }
 
 
@@ -209,7 +204,7 @@ body::-webkit-scrollbar-thumb {
   }
 
 #linkinsta, #linkwpp{
-    color: var(--color-1);
+    color: var(--color-primary);
     text-decoration: none;
     transition: .5s;
 }
@@ -368,11 +363,11 @@ form input[type='file']{
     max-height: 500px;
 }
 .prodcontainer div{
-    background-color: var(--color-primary);
+    background-color: var(--color-1);
     padding: 15px;
     border-radius: 20px;
-    color: var(--color-1);
-    margin: 20px;
+    color: var(--color-primary);
+    margin: 5px;
     transition: .5s;
 }
 .prodcontainer div:hover{
@@ -404,13 +399,15 @@ form input[type='file']{
     height: 300px;
 }
 
-
+.carrinho #total{
+    color: var(--color-1);
+}
 .carrinho{
     display: flex;
     align-items: center;
     position: fixed;
     background-color: var(--color-primary);
-    color: #111;
+    color: var(--color-1);
     padding: 15px;
     border-radius: 20px;
     right: 5%;
@@ -419,12 +416,15 @@ form input[type='file']{
 
     flex-direction: column;
 }
+.carrinho #x{
+    color: var(--color-1);
+}
 .carrinho #c:hover{
-    color:darkgreen;
+    color:green;
     cursor: pointer;
 }
 .carrinho #x:hover{
-    color: darkred;
+    color: red;
     transition: .5s;
     cursor: pointer;
 }
@@ -452,15 +452,17 @@ form input[type='file']{
 .items p{
     display: flex;
     align-items: center;
+    color: var(--color-1);
 }
 
 #carrinhoorcamento{
     transition: .5s;
+    color: var(--color-1);
 }
 
 .carrinho #carrinhoorcamento:hover{
     cursor: pointer;
-    color: darkgreen !important;
+    color: green !important;
     transition: .5s;
 }
 
@@ -472,30 +474,21 @@ form input[type='file']{
     width: 300px;
 }
 .pd #pesquisa{
-    color: #111;
-    border-radius: 10px;
-    border: none;
-    padding: 10px;
-}
-.pd button{
-    border-radius: 10px;
-    padding: 10px;
-    border: none;
-    color: #111;
-    transition: .5s;
-}
-.pd button:hover{
-    cursor: pointer;
-    background-color: var(--color-2);
-    border-radius: 10px;
-    padding: 10px;
     color: var(--color-1);
-    transition: .5s;
+    background-color: var(--color-text);
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+
 }
 .filtros{
     display: flex;
     gap: 1rem;
     color: var(--color-primary);
+    border: var(--color-3) 1px solid;
+    width: fit-content;
+    padding: 5px;
+    border-radius: 20px;
 }
 .filtros img{
     width: 70px;
@@ -518,13 +511,13 @@ form input[type='file']{
 .prod_name{
     font-size: 20px;
     font-weight: bolder;
-    color: var(--color-1);
+    color: var(--color-primary);
 }
 
 .prod_value{
     font-size: 20px;
     font-weight: bolder;
-    color: var(--color-1);
+    color: var(--color-primary);
 }
 
 .box .serv{

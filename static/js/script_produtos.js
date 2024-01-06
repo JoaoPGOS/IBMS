@@ -31,13 +31,6 @@ function downloadFile(fileUrl) {
 }
 
 
-window.addEventListener('scroll', function() {
-    if (window.scrollY > 100) {
-        document.querySelector('.navbar').style.background = 'var(--color-navbar)';
-    }else if(window.scrollY < 100){
-        document.querySelector('.navbar').style.background = 'transparent';
-    }
-});
 
 
 function send(name,value){

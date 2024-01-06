@@ -17,14 +17,6 @@ function pararRolagem() {
     clearInterval(intervalo);
 }
 
-window.addEventListener('scroll', function() {
-    if (window.scrollY > 100) {
-        document.querySelector('.navbar').style.background = 'var(--color-navbar)';
-    }else if(window.scrollY < 100){
-        document.querySelector('.navbar').style.background = 'transparent';
-    }
-});
-
 
 div.addEventListener('mouseover', pararRolagem);
 div.addEventListener('mouseout', iniciarRolagem);
