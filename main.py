@@ -36,10 +36,6 @@ def servico():
 def downloads():
     return render_template('downloads.html')
 
-@app.route("/portifolio")
-def portifolio():
-    return render_template('portifolio.html')
-
 @app.route("/inserir", methods=['POST','GET'])
 def inserir():
     nome = request.form.get('nome')
