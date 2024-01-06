@@ -30,13 +30,23 @@ div.addEventListener('mouseover', pararRolagem);
 div.addEventListener('mouseout', iniciarRolagem);
 
 function contatoslink(){
-    document.getElementById('Contato').click();
+    document.getElementById('contat').click();
 }
 
+function downloadslink(){
+        window.location.replace('/downloads')
+}
 function produtoslink(){
     document.getElementById('produtos').click();
 }
 
+function servicoslink(){
+    document.getElementById('servicos').click();
+}
+
+function portlink(){
+    window.location.replace('/portifolio')
+}
 
 
 

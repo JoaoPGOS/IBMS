@@ -29,7 +29,16 @@ def contato():
 
 @app.route("/servicos")
 def servico():
-    return render_template('servicos.html')
+    serv_all = msl.gera_servicos()
+    return render_template('servicos.html',cabelo=serv_all[0],pele=serv_all[1],tratamentos=serv_all[2])
+
+@app.route("/downloads")
+def downloads():
+    return render_template('downloads.html')
+
+@app.route("/portifolio")
+def portifolio():
+    return render_template('portifolio.html')
 
 @app.route("/inserir", methods=['POST','GET'])
 def inserir():
@@ -37,6 +46,10 @@ def inserir():
     valor = request.form.get('valor')
     delete = request.form.get('delete')
     marca = request.form.get('marca')
+    servico = request.form.get('servico')
+    valor_serv = request.form.get('valor_serv')
+    classe = request.form.get('classe')
+    delete_serv = request.form.get('delete_serv')
     if request.method == 'POST':
         file = request.files['arquivo']
         image_string = base64.b64encode(file.read()).decode('utf-8')
@@ -44,9 +57,12 @@ def inserir():
         image_string = ''
     promo = request.form.get('promocao')
     
+    if servico != None:
+        resp = msl.insere_serv(servico,valor_serv,classe,delete_serv)
+        return render_template('atualizarbase.html',resp_serv=resp,nome_serv=servico,valor_serv=valor_serv,nomes=f'',valor='',promo='', img='',marca='', resp='Insira/Atualize/Delete o produto')
     if nome != None:
         res = msl.insere_prod(nome,valor,image_string,promo,delete,marca)
-        return render_template('atualizarbase.html',nomes=f'{nome}',valor=valor,promo=promo, img=image_string,resp=res,marca=marca)
+        return render_template('atualizarbase.html',nomes=f'{nome}',valor=valor,promo=promo, img=image_string,resp=res,marca=marca,resp_serv="Insira/Atualize/Delete o serviço",nome_serv="",valor_serv="")
     else:
         return render_template('atualizarbase.html',nomes=f'',valor='',promo='', img='',marca='', resp='Insira/Atualize/Delete o produto')
 

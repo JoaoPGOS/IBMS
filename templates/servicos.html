@@ -22,9 +22,35 @@
             <a href="/contato" id="contat">Contato</a>
         </div>
     </div>
-
     <div class="container">
-        <h3 style="color: white;">Em construção</h3>
+        <div class="servbox">
+            <div class="titleserv">Cabelo</div>
+            <div>
+                <div class="valores">
+                    {{cabelo | safe}}
+                </div>
+                <video src="/static/archives/production_id 3997177 (2160p).mp4" muted autoplay loop></video>
+            </div>
+        </div>
+        <div class="servbox">
+            <div>
+                <video src="/static/archives/pele_vid.mp4" muted autoplay loop ></video>
+                <div class="valores">
+                    {{pele | safe}}
+                </div>
+            </div>
+                        <div class="titleserv">Pele</div>
+        </div>
+        <div class="servbox">
+            <div class="titleserv">Tratamentos</div>
+            <div>
+                <div class="valores">
+                    {{tratamentos | safe}}
+                </div>
+                <video src="/static/archives/production_id 3997176 (2160p).mp4" muted autoplay loop></video>
+            </div>
+        </div>
     </div>
 </body>
+<script src="/static/js/script.js"></script>
 </html>

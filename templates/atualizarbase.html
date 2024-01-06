@@ -39,6 +39,26 @@
     <p>É promoção: {{promo}}</p>
 </div>
 </div>
+    <div class="caixa">
+        <form action="" method="post" enctype="multipart/form-data">
+            Atualizar Serviços
+            <p>Serviço: <input type="text" name="servico" id="nome"></p>
+            <p>Valor: <input type="text" name="valor_serv" id=""></p>
+            <select name="classe" id="">
+                <option value="Cabelo">Cabelo</option>
+                <option value="Pele">Pele</option>
+                <option value="Tratamento">Tratamento</option>
+            </select>
+            <input type="file" name="arquivo" style="display: none;">
+            <p>Se deseja deletar o serviço, insira 1: <input type="text" name="delete_serv" id="" value=""></p>
+            <input type="submit" value="Atualizar" name="submit_serv">
+        </form>
+    <div>
+    {{resp_serv}}
+    <p>Serviço: {{nome_serv}}</p>
+    <p>Valor: {{valor_serv}}</p>
+</div>
+</div>
 </body>
 <script src="/static/js/script.js"></script>
 </html>

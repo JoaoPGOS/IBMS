@@ -100,3 +100,109 @@ def gera_produtos():
     except mysql.connector.Error as err:
         print(f"Erro na conexão: {err}")
         return 'falha'
+
+
+
+
+def insere_serv(servico,valor_serv,classe,delete_serv):
+    import mysql.connector
+
+
+    host = 'viaduct.proxy.rlwy.net'
+    port = 58177
+    database = 'railway'
+    user = 'root'
+    password = 'HhBBh1gGeBegbEAeh-cH45b-1CfG45bc'
+    try:
+        conn = mysql.connector.connect(
+            host=host,
+            port=port,
+            user=user,
+            password=password,
+            database=database,
+            auth_plugin='caching_sha2_password'
+        )
+        print("Conexão bem-sucedida!")
+        resposta = ''
+
+        cursor = conn.cursor()
+
+        cursor.execute("SELECT * FROM Servicos WHERE servico = %s", (servico,))
+        existing_product = cursor.fetchall()
+
+
+        if existing_product:
+            if delete_serv == '1':
+                cursor.execute(f"DELETE FROM Servicos WHERE servico = '{servico}'")
+                resposta = 'Serviço Deletado'
+            else:
+                cursor.execute(f"UPDATE Servicos SET valor = {valor_serv} WHERE servico = '{servico}'")
+                resposta = 'Serviço Atualizado'
+        else:
+            cursor.execute(f"INSERT INTO Servicos VALUES(0,'{servico}','{classe}','{valor_serv}')")
+            resposta = 'Serviço Inserido'
+
+        conn.commit()
+
+        conn.close()
+
+        return resposta
+
+    except mysql.connector.Error as err:
+        print(f"Erro na conexão: {err}")
+
+def gera_servicos():
+    import mysql.connector
+
+
+    host = 'viaduct.proxy.rlwy.net'
+    port = 58177
+    database = 'railway'
+    user = 'root'
+    password = 'HhBBh1gGeBegbEAeh-cH45b-1CfG45bc'
+    try:
+        conn = mysql.connector.connect(
+            host=host,
+            port=port,
+            user=user,
+            password=password,
+            database=database,
+            auth_plugin='caching_sha2_password'
+        )
+        cabelo = ''
+        pele = ''
+        tratamento = ''
+        servicos_list = []
+
+        cursor = conn.cursor()
+
+        cursor.execute("SELECT * FROM Servicos WHERE classe = 'Cabelo'")
+        servicos_cabelo = cursor.fetchall()
+
+        for row in servicos_cabelo:
+            cabelo += f'<p>R${row[3]} - {row[1]}'
+        servicos_list.append(cabelo)
+
+        cursor.execute("SELECT * FROM Servicos WHERE classe = 'Pele'")
+        servicos_pele = cursor.fetchall()
+
+        for row in servicos_pele:
+            pele+= f'<p>R${row[3]} - {row[1]}'
+        servicos_list.append(pele)
+
+        cursor.execute("SELECT * FROM Servicos WHERE classe = 'Tratamento'")
+        servicos_tratamento = cursor.fetchall()
+
+        for row in servicos_tratamento:
+            tratamento+= f'<p>R${row[3]} - {row[1]}'
+        servicos_list.append(tratamento)
+
+        
+
+
+
+        conn.close()
+        return servicos_list
+    except mysql.connector.Error as err:
+        print(f"Erro na conexão: {err}")
+        return 'falha'

@@ -540,3 +540,62 @@ form input[type='file']{
     color: darkgreen;
     transition: .5s;
 }
+.servbox{
+    color: var(--color-primary);
+    display: flex;
+    width: 300px;
+}
+.servbox .valores{
+    display: flex;
+    flex-direction: column;
+    color: var(--color-primary);
+    gap: 1.5rem;
+}
+.servbox .valores p{
+    padding-bottom: 10px;
+    border-bottom: solid 1px var(--color-primary);
+}
+
+.servbox div{
+    display: flex;
+    gap: 2rem;
+    width: 400px;
+    font-size: 10px;
+}
+
+.servbox video{
+    width: 200px;
+}
+
+
+@media only screen and (min-width: 800px) {
+  
+    .servbox{
+        color: var(--color-primary);
+        display: flex;
+        width: 800px;
+        align-self: center;
+
+    }
+    .servbox .titleserv{
+        font-size: 20px;
+    }
+    .servbox .valores{
+        display: flex;
+        flex-direction: column;
+        color: var(--color-primary);
+        gap: 1.5rem;
+    }
+    .servbox div{
+        display: flex;
+        gap: 2rem;
+        width: 800px;
+    }
+    .servbox .valores p{
+        font-size: 17px !important;
+    }
+
+    .servbox video{
+        width: 200px;
+    }
+}
