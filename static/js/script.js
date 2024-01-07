@@ -18,9 +18,6 @@ function pararRolagem() {
 }
 
 
-div.addEventListener('mouseover', pararRolagem);
-div.addEventListener('mouseout', iniciarRolagem);
-
 function contatoslink(){
     document.getElementById('contat').click();
 }
@@ -65,8 +62,33 @@ function promo(p){
 }
 
 
+function search(value){
+    creury = document.querySelectorAll('.pesquisa')
+    value = value.toUpperCase()
+    for(i=0;i != creury.length;i++){
+        creu = creury[i].id
+        if(creu.toUpperCase().includes(value)==false){
+            document.getElementById(creu).style.display = 'none';
+        }else{
+            document.getElementById(creu).style.display = 'block'
+        }
+    }
+}
 
-
-
-checagem();
-iniciarRolagem();
+function displayall(){
+    document.getElementById('searched').style.width = 'fit-content'
+    document.getElementById('searched').style.height = '400px'
+    document.getElementById('searched').style.transition = '.5s'
+    document.getElementById('searched').style.border = 'var(--color-primary) 1px solid'
+}
+function changedisplayall(){
+    document.getElementById('searched').style.width = '0px'
+    document.getElementById('searched').style.height = '0px'
+    document.getElementById('searched').style.transition = '.5s'
+    document.getElementById('searched').style.border = 'none'
+}
+function insert_to(name,valor){
+    document.getElementById('nome').value = name
+    document.getElementById('valor').value = valor
+    changedisplayall();
+} 

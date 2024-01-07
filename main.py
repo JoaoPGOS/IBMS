@@ -40,6 +40,7 @@ def downloads():
 def inserir():
     nome = request.form.get('nome')
     valor = request.form.get('valor')
+    desc = request.form.get('descricao')
     delete = request.form.get('delete')
     marca = request.form.get('marca')
     servico = request.form.get('servico')
@@ -55,12 +56,12 @@ def inserir():
     
     if servico != None:
         resp = msl.insere_serv(servico,valor_serv,classe,delete_serv)
-        return render_template('atualizarbase.html',resp_serv=resp,nome_serv=servico,valor_serv=valor_serv,nomes=f'',valor='',promo='', img='',marca='', resp='Insira/Atualize/Delete o produto')
+        return render_template('atualizarbase.html',prod_list=msl.gera_prod_list(),resp_serv=resp,nome_serv=servico,valor_serv=valor_serv,nomes=f'',valor='',promo='', img='',marca='', desc='', resp='Insira/Atualize/Delete o produto')
     if nome != None:
-        res = msl.insere_prod(nome,valor,image_string,promo,delete,marca)
-        return render_template('atualizarbase.html',nomes=f'{nome}',valor=valor,promo=promo, img=image_string,resp=res,marca=marca,resp_serv="Insira/Atualize/Delete o serviço",nome_serv="",valor_serv="")
+        res = msl.insere_prod(nome,valor,image_string,promo,delete,marca,desc)
+        return render_template('atualizarbase.html',prod_list=msl.gera_prod_list(),nomes=f'{nome}',valor=valor,promo=promo, img=image_string,resp=res,marca=marca,desc=desc, resp_serv="Insira/Atualize/Delete o serviço",nome_serv="",valor_serv="")
     else:
-        return render_template('atualizarbase.html',nomes=f'',valor='',promo='', img='',marca='', resp='Insira/Atualize/Delete o produto')
+        return render_template('atualizarbase.html',prod_list=msl.gera_prod_list(),nomes=f'',valor='',promo='', img='',marca='',desc='', resp='Insira/Atualize/Delete o produto')
 
 
 
