@@ -46,21 +46,21 @@ function promo(p){
     if(p == 'S'){
         document.getElementById('promocao').value = '1'
         S = document.getElementById('S')
-        S.style.background = 'var(--color-1)'
-        S.style.color = 'var(--color-primary)'
+        S.style.background = 'var(--color-primary)'
+        S.style.color = 'var(--color-1)'
 
         N = document.getElementById('N')
-        N.style.color = 'var(--color-1)'
-        N.style.background = 'var(--color-primary)'
+        N.style.color = 'var(--color-primary)'
+        N.style.background = 'var(--color-1)'
     }else{
         document.getElementById('promocao').value = '0'
         S = document.getElementById('S')
-        S.style.color = 'var(--color-1)'
-        S.style.background = 'var(--color-primary)'
+        S.style.color = 'var(--color-primary)'
+        S.style.background = 'var(--color-1)'
 
         N = document.getElementById('N')
-        N.style.background = 'var(--color-1)'
-        N.style.color = 'var(--color-primary)'
+        N.style.background = 'var(--color-primary)'
+        N.style.color = 'var(--color-1)'
     }
 }
 

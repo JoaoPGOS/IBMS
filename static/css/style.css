@@ -292,25 +292,26 @@ form{
     flex-direction: column;
     width: 400px;
     align-items: center;
-    background-color: var(--color-primary);
+    background-color: var(--color-1);
     padding: 20px;
     border-radius: 20px;
     gap: 1rem;
-    color: var(--color-1);
+    color: var(--color-primary);
     font-weight: bold;
+    border: #111 solid 2px;
 }
 
 form input[type='text']{
     width: 300px;
-    padding: 10px;
-    border-radius: 20px;
-    border: solid 2px var(--color-1);
+    padding: 5px;
+    border-radius: 10px;
+    border: solid 1px var(--color-primary);
     font-weight: bold;
 }
 
 form button{
-    background-color: var(--color-primary);
-    color: var(--color-1);
+    background-color: var(--color-1);
+    color: var(--color-primary);
     border: none;
     border-radius: 15px;
     cursor: pointer;
@@ -320,8 +321,8 @@ form button{
     transition: .5s;
 }
 form #N{
-    color: var(--color-primary);
-    background-color: var(--color-1);
+    color: var(--color-1);
+    background-color: var(--color-primary);
 
 }
 
@@ -560,7 +561,11 @@ form input[type='file']{
     width: 200px;
 }
 
-
+.general{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
 @media only screen and (min-width: 800px) {
   
     .servbox{
@@ -591,6 +596,11 @@ form input[type='file']{
     .servbox video{
         width: 200px;
     }
+    .general{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
 }
 
 .ProHair{
