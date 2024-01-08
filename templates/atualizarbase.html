@@ -27,6 +27,7 @@
             <select name="marca" id="marca" onmouseover="changedisplayall()">
                 <option value="ProHair" >Pro Hair</option>
                 <option value="Nuance" >Nuance</option>
+                <option value="Fluence" >Fluence</option>
             </select>
             <input type="file" name="arquivo" id="" width="300px" height="300px" onmouseover="changedisplayall()">
             <p onmouseover="changedisplayall()">Se deseja deletar o produto, insira 1: <input type="text" name="delete" id="" value=""></p>
@@ -50,11 +51,10 @@
         <form action="" method="post" enctype="multipart/form-data">
             Atualizar Serviços
             <p>Serviço: <input type="text" name="servico" id="nome" onkeyup="search(this.value)"></p>
-            <p>Valor: <input type="text" name="valor_serv" id=""></p>
             <select name="classe" id="">
                 <option value="Cabelo">Cabelo</option>
                 <option value="Pele">Pele</option>
-                <option value="Tratamento">Tratamento</option>
+                <option value="Rosto">Rosto</option>
             </select>
             <input type="file" name="arquivo" style="display: none;">
             <p>Se deseja deletar o serviço, insira 1: <input type="text" name="delete_serv" id="" value=""></p>
@@ -63,10 +63,11 @@
     <div>
     {{resp_serv}}
     <p>Serviço: {{nome_serv}}</p>
-    <p>Valor: {{valor_serv}}</p>
+    <p>Categoria {{categoria}}</p>
 </div>
 </div>
 </div>
 </body>
 <script src="/static/js/script.js"></script>
 </html>
+

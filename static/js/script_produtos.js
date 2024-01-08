@@ -2,7 +2,7 @@ localStorageCarrinho = 'Carrinho'
 
 document.getElementById('downloadExcel').addEventListener('click', function() {
     // Substitua 'caminho/para/sua/planilha.xlsx' pelo caminho real do seu arquivo Excel
-    var planilhaUrl = '/static/archives/Nuance.xlsx';
+    var planilhaUrl = '/static/archives/Nuance.pdf';
     downloadFile(planilhaUrl);
 });
 
@@ -11,6 +11,13 @@ document.getElementById('downloadPDF').addEventListener('click', function() {
     var pdfUrl = '/static/archives/Prohair.pdf';
     downloadFile(pdfUrl);
 });
+
+document.getElementById('downloadExcelFluence').addEventListener('click', function() {
+    // Substitua 'caminho/para/seu/arquivo.pdf' pelo caminho real do seu arquivo PDF
+    var fluenceUrl = '/static/archives/Fluence.pdf';
+    downloadFile(fluenceUrl);
+});
+
 
 function downloadFile(fileUrl) {
     // Cria um elemento de link temporário
@@ -88,10 +95,16 @@ function search(value){
 function filtroProhair(){
     var proHairElements = document.querySelectorAll('.ProHair');
     var nuanceElements = document.querySelectorAll('.Nuance');
+    var fluenceElements = document.querySelectorAll('.Fluence');
 
     if (proHairElements.length > 0) {
         for (var i = 0; i < proHairElements.length; i++) {
             proHairElements[i].style.display = 'block';
+        }
+    }
+    if (fluenceElements.length > 0) {
+        for (var i = 0; i < fluenceElements.length; i++) {
+            fluenceElements[i].style.display = 'none';
         }
     }
 
@@ -100,13 +113,42 @@ function filtroProhair(){
             nuanceElements[i].style.display = 'none';
         }
     }
+    document.getElementById('fluence_bt').style.border = 'none'
     document.getElementById('pro_hair').style.border = '2px green solid'
     document.getElementById('nuance_bt').style.border = 'none'
+}
+
+function filtroFluence(){
+    var proHairElements = document.querySelectorAll('.ProHair');
+    var nuanceElements = document.querySelectorAll('.Nuance');
+    var fluenceElements = document.querySelectorAll('.Fluence');
+
+    if (fluenceElements.length > 0) {
+        for (var i = 0; i < fluenceElements.length; i++) {
+            fluenceElements[i].style.display = 'block';
+        }
+    }
+
+    if (nuanceElements.length > 0) {
+        for (var i = 0; i < nuanceElements.length; i++) {
+            nuanceElements[i].style.display = 'none';
+        }
+    }
+    if (proHairElements.length > 0) {
+        for (var i = 0; i < proHairElements.length; i++) {
+            proHairElements[i].style.display = 'none';
+        }
+    }
+    
+    document.getElementById('fluence_bt').style.border = '2px green solid'
+    document.getElementById('nuance_bt').style.border = 'none'
+    document.getElementById('pro_hair').style.border = 'none'
 }
 
 function filtroNuance(){
     var proHairElements = document.querySelectorAll('.ProHair');
     var nuanceElements = document.querySelectorAll('.Nuance');
+    var fluenceElements = document.querySelectorAll('.Fluence');
 
     if (proHairElements.length > 0) {
         for (var i = 0; i < proHairElements.length; i++) {
@@ -119,25 +161,22 @@ function filtroNuance(){
             nuanceElements[i].style.display = 'block';
         }
     }
+    if (fluenceElements.length > 0) {
+        for (var i = 0; i < fluenceElements.length; i++) {
+            fluenceElements[i].style.display = 'none';
+        }
+    }
     document.getElementById('pro_hair').style.border = 'none'
     document.getElementById('nuance_bt').style.border = '2px green solid'
+    document.getElementById('fluence_bt').style.border = 'none'
 }
 
-function limparfiltro(){
-    var proHairElements = document.querySelectorAll('.ProHair');
-    var nuanceElements = document.querySelectorAll('.Nuance');
-
-    if (proHairElements.length > 0) {
-        for (var i = 0; i < proHairElements.length; i++) {
-            proHairElements[i].style.display = 'block';
-        }
+function displaydesc(id){
+    index = id + '_d'
+    if(document.getElementById(index).style.display == 'flex'){
+            document.getElementById(index).style.display = 'none'
+    }else{
+            document.getElementById(index).style.display = 'flex'
     }
 
-    if (nuanceElements.length > 0) {
-        for (var i = 0; i < nuanceElements.length; i++) {
-            nuanceElements[i].style.display = 'block';
-        }
-    }
-    document.getElementById('pro_hair').style.border = 'none'
-    document.getElementById('nuance_bt').style.border = 'none'
 }

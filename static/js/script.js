@@ -18,8 +18,8 @@ function pararRolagem() {
 }
 
 
-function contatoslink(){
-    document.getElementById('contat').click();
+function galerialink(){
+    window.location.replace('/galeria')
 }
 
 function downloadslink(){

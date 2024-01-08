@@ -228,8 +228,9 @@ body::-webkit-scrollbar-thumb {
 #img_home{
     display: flex;
     align-self: center;
-    width: 300px;
-    border-radius: 20px;
+    width: 100%;
+    margin: 0px !important;
+    padding: 0px !important;
 }
 
 @media only screen and (min-width: 800px) {
@@ -270,10 +271,6 @@ body::-webkit-scrollbar-thumb {
         display: flex;
         flex-direction: row;
         gap: 1rem;
-    }
-    #img_home{
-        width: 800px;
-        border-radius: 20px;
     }
     *{
         font-size: 16px;
@@ -377,15 +374,38 @@ form input[type='file']{
 .prodcontainer div{
     background-color: var(--color-1);
     padding: 15px;
+    max-width: 600px;
     border-radius: 20px;
+    display: flex;
     color: var(--color-primary);
     margin: 5px;
     transition: .5s;
 }
+.desc{
+    display: none;
+    text-align: justify;
+    transition: .5s;
+}
+.prodcontainer div .insidediv{
+    display: flex;
+    flex-direction: column;
+    transition: .5s;
+}
+.prodcontainer img{
+    cursor: pointer;
+}
 .prodcontainer div:hover{
     transition: .5s;
     padding: 20px;
+    
     border-radius: 20px;
+    transition: .5s;
+    .desc{
+        display: flex !important;
+        text-align: justify;
+        transition: .5s;
+    }
+
 }
 .prodcontainer .pointer{
     cursor: pointer;
@@ -555,6 +575,8 @@ form input[type='file']{
     flex-direction: column;
     color: var(--color-primary);
     gap: 1.5rem;
+    overflow-y: scroll;
+    max-height: 380px;
 }
 .servbox .valores p{
     padding-bottom: 10px;

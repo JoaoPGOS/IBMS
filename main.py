@@ -27,6 +27,10 @@ def produtos():
 def contato():
     return render_template('contatos.html')
 
+@app.route("/galeria")
+def galeria():
+    return render_template('galeria.html')
+
 @app.route("/servicos")
 def servico():
     serv_all = msl.gera_servicos()
@@ -44,7 +48,6 @@ def inserir():
     delete = request.form.get('delete')
     marca = request.form.get('marca')
     servico = request.form.get('servico')
-    valor_serv = request.form.get('valor_serv')
     classe = request.form.get('classe')
     delete_serv = request.form.get('delete_serv')
     if request.method == 'POST':
@@ -55,11 +58,11 @@ def inserir():
     promo = request.form.get('promocao')
     
     if servico != None:
-        resp = msl.insere_serv(servico,valor_serv,classe,delete_serv)
-        return render_template('atualizarbase.html',prod_list=msl.gera_prod_list(),resp_serv=resp,nome_serv=servico,valor_serv=valor_serv,nomes=f'',valor='',promo='', img='',marca='', desc='', resp='Insira/Atualize/Delete o produto')
+        resp = msl.insere_serv(servico,classe,delete_serv)
+        return render_template('atualizarbase.html',prod_list=msl.gera_prod_list(),resp_serv=resp,nome_serv=servico,nomes=f'',valor='',promo='', img='',marca='', desc='', categoria='', resp='Insira/Atualize/Delete o produto')
     if nome != None:
         res = msl.insere_prod(nome,valor,image_string,promo,delete,marca,desc)
-        return render_template('atualizarbase.html',prod_list=msl.gera_prod_list(),nomes=f'{nome}',valor=valor,promo=promo, img=image_string,resp=res,marca=marca,desc=desc, resp_serv="Insira/Atualize/Delete o serviço",nome_serv="",valor_serv="")
+        return render_template('atualizarbase.html',prod_list=msl.gera_prod_list(),nomes=f'{nome}',valor=valor,promo=promo, img=image_string,resp=res,marca=marca,desc=desc, categoria=classe, resp_serv="Insira/Atualize/Delete o serviço",nome_serv="")
     else:
         return render_template('atualizarbase.html',prod_list=msl.gera_prod_list(),nomes=f'',valor='',promo='', img='',marca='',desc='', resp='Insira/Atualize/Delete o produto')
 
@@ -69,18 +72,24 @@ def inserir():
 def attinsert():
     if request.method == 'POST':
         # Lida com o upload do PDF
-        if 'pdf_file' in request.files:
-            pdf_file = request.files['pdf_file']
+        if 'ProHair_file' in request.files:
+            pdf_file = request.files['ProHair_file']
             if pdf_file.filename != '' and allowed_file(pdf_file.filename):
                 caminho_pdf = os.path.join(app.config['UPLOAD_FOLDER'], 'Prohair.pdf')
                 pdf_file.save(caminho_pdf)
+        if 'fluence_file' in request.files:
+            pdf_file = request.files['fluence_file']
+            if pdf_file.filename != '' and allowed_file(pdf_file.filename):
+                caminho_pdf = os.path.join(app.config['UPLOAD_FOLDER'], 'Fluence.pdf')
+                pdf_file.save(caminho_pdf)
 
-        # Lida com o upload do Excel
-        if 'excel_file' in request.files:
-            excel_file = request.files['excel_file']
-            if excel_file.filename != '' and allowed_file(excel_file.filename):
-                caminho_excel = os.path.join(app.config['UPLOAD_FOLDER'], 'Nuance.xlsx')
-                excel_file.save(caminho_excel)
+        if 'Nuance_file' in request.files:
+            pdf_file = request.files['Nuance_file']
+            if pdf_file.filename != '' and allowed_file(pdf_file.filename):
+                caminho_pdf = os.path.join(app.config['UPLOAD_FOLDER'], 'Nuance.pdf')
+                pdf_file.save(caminho_pdf)
+
+
 
     return render_template('atualizatabelas.html')
 
