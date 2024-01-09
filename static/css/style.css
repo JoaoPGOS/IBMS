@@ -364,6 +364,16 @@ form input[type='file']{
     padding: 20px;
     border-radius: 20px;
 }
+.contentgaleria{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 200px;
+    gap: 6rem;
+    justify-content: center;
+}
+.contentgaleria img{
+    width: 300px;
+}
 
 .prodcontainer{
     display: flex;

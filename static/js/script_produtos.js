@@ -175,6 +175,7 @@ function displaydesc(id){
     index = id + '_d'
     document.getElementById(index).style.display = 'flex'
     document.getElementById(id).style.width = '100%'
+    
 }
 function closeitem(id){
     index = id + '_d'

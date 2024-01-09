@@ -66,6 +66,17 @@
     <p>Categoria {{categoria}}</p>
 </div>
 </div>
+    <div class="caixa">
+        <form action="" method="post" enctype="multipart/form-data">
+            Adicionar Imagem a Galeria
+            <input type="file" name="imagem">
+            <input type="file" name="arquivo" style="display: none;">
+            <input type="submit" value="Adicionar Imagem" name="submit_serv">
+        </form>
+    <div>
+    <img src="data:image/jpeg;base64,{{imagem}}" alt="" width="400px">
+</div>
+</div>
 </div>
 </body>
 <script src="/static/js/script.js"></script>

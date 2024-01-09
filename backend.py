@@ -247,3 +247,68 @@ def gera_prod_list():
         return produtos_cadastrados
     except mysql.connector.Error as err:
         print(f"Erro na conexão: {err}")
+
+def insere_galeria(imagem):
+    import mysql.connector
+
+
+    host = 'viaduct.proxy.rlwy.net'
+    port = 58177
+    database = 'railway'
+    user = 'root'
+    password = 'HhBBh1gGeBegbEAeh-cH45b-1CfG45bc'
+    try:
+        conn = mysql.connector.connect(
+            host=host,
+            port=port,
+            user=user,
+            password=password,
+            database=database,
+            auth_plugin='caching_sha2_password'
+        )
+        print("Conexão bem-sucedida!")
+
+        cursor = conn.cursor()
+        cursor.execute(f"INSERT INTO Galeria VALUES(0,'','{imagem}')")
+
+        conn.commit()
+
+        conn.close()
+
+    except mysql.connector.Error as err:
+        print(f"Erro na conexão: {err}")
+
+
+
+def gera_galeria():
+    import mysql.connector
+
+
+    host = 'viaduct.proxy.rlwy.net'
+    port = 58177
+    database = 'railway'
+    user = 'root'
+    password = 'HhBBh1gGeBegbEAeh-cH45b-1CfG45bc'
+    try:
+        conn = mysql.connector.connect(
+            host=host,
+            port=port,
+            user=user,
+            password=password,
+            database=database,
+            auth_plugin='caching_sha2_password'
+        )
+
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM Galeria")
+        table = cursor.fetchall()
+
+        galeria = ''
+
+        for row in table:
+            galeria+=f"<img src='data:image/jpeg;base64,{row[2]}'>"
+        conn.close()
+        return galeria
+    except mysql.connector.Error as err:
+        print(f"Erro na conexão: {err}")
+        return 'falha'

@@ -29,7 +29,7 @@ def contato():
 
 @app.route("/galeria")
 def galeria():
-    return render_template('galeria.html')
+    return render_template('galeria.html', galeria=msl.gera_galeria())
 
 @app.route("/servicos")
 def servico():
@@ -53,16 +53,21 @@ def inserir():
     if request.method == 'POST':
         file = request.files['arquivo']
         image_string = base64.b64encode(file.read()).decode('utf-8')
+        imagem = request.files['imagem']
+        imagem_base64 = base64.b64encode(imagem.read()).decode('utf-8')
     else:
+        imagem_base64 = ''
         image_string = ''
     promo = request.form.get('promocao')
-    
+    if imagem_base64 != '':
+        msl.insere_galeria(imagem_base64)
+        return render_template('atualizarbase.html',prod_list=msl.gera_prod_list(),nomes='',valor='',promo='', img='',resp='',marca='',desc='', categoria='', imagem=imagem_base64, resp_serv="Insira/Atualize/Delete o serviço",nome_serv="")
     if servico != None:
         resp = msl.insere_serv(servico,classe,delete_serv)
-        return render_template('atualizarbase.html',prod_list=msl.gera_prod_list(),resp_serv=resp,nome_serv=servico,nomes=f'',valor='',promo='', img='',marca='', desc='', categoria='', resp='Insira/Atualize/Delete o produto')
+        return render_template('atualizarbase.html',prod_list=msl.gera_prod_list(),resp_serv=resp,nome_serv=servico,nomes=f'',valor='',promo='', img='',marca='', desc='', categoria='',imagem='', resp='Insira/Atualize/Delete o produto')
     if nome != None:
         res = msl.insere_prod(nome,valor,image_string,promo,delete,marca,desc)
-        return render_template('atualizarbase.html',prod_list=msl.gera_prod_list(),nomes=f'{nome}',valor=valor,promo=promo, img=image_string,resp=res,marca=marca,desc=desc, categoria=classe, resp_serv="Insira/Atualize/Delete o serviço",nome_serv="")
+        return render_template('atualizarbase.html',prod_list=msl.gera_prod_list(),nomes=f'{nome}',valor=valor,promo=promo, img=image_string,resp=res,marca=marca,desc=desc, categoria=classe, imagem=imagem_base64, resp_serv="Insira/Atualize/Delete o serviço",nome_serv="")
     else:
         return render_template('atualizarbase.html',prod_list=msl.gera_prod_list(),nomes=f'',valor='',promo='', img='',marca='',desc='', resp='Insira/Atualize/Delete o produto')
 
