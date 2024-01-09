@@ -371,12 +371,24 @@ form input[type='file']{
     max-width: 100%;
     max-height: 500px;
 }
+.prodcontainer div [class='bi bi-x-lg']{
+    position: relative;
+    display: flex;
+    align-self: flex-end;
+    cursor: pointer;
+
+}
+.prodcontainer div [class='bi bi-x-lg']:hover{
+    color: red;
+}
 .prodcontainer div{
     background-color: var(--color-1);
     padding: 15px;
     max-width: 600px;
     border-radius: 20px;
+    cursor: pointer;
     display: flex;
+    flex-direction: column;
     color: var(--color-primary);
     margin: 5px;
     transition: .5s;
@@ -391,20 +403,11 @@ form input[type='file']{
     flex-direction: column;
     transition: .5s;
 }
-.prodcontainer img{
-    cursor: pointer;
-}
-.prodcontainer div:hover{
+.prodcontainer .searched:hover{
     transition: .5s;
-    padding: 20px;
-    
-    border-radius: 20px;
+    padding: 5px;
+    border: 1px solid var(--color-3);
     transition: .5s;
-    .desc{
-        display: flex !important;
-        text-align: justify;
-        transition: .5s;
-    }
 
 }
 .prodcontainer .pointer{

@@ -173,10 +173,11 @@ function filtroNuance(){
 
 function displaydesc(id){
     index = id + '_d'
-    if(document.getElementById(index).style.display == 'flex'){
-            document.getElementById(index).style.display = 'none'
-    }else{
-            document.getElementById(index).style.display = 'flex'
-    }
-
+    document.getElementById(index).style.display = 'flex'
+    document.getElementById(id).style.width = '100%'
+}
+function closeitem(id){
+    index = id + '_d'
+    document.getElementById(index).style.display = 'none'
+    document.getElementById(id).style.width = 'fit-content'
 }
