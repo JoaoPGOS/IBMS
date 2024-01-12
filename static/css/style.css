@@ -536,11 +536,11 @@ form input[type='file']{
     border-radius: 20px;
 }
 .filtros img{
-    width: 70px;
+    width: 120px;
     border-radius: 20px;
     cursor: pointer;
     transition: .2s;
-    height: 70px;
+    height: 120px;
 }
 .filtros img:hover{
     border: 2px solid green;
@@ -582,23 +582,23 @@ form input[type='file']{
     color: var(--color-primary);
     display: flex;
     width: 300px;
+    gap: 1.5rem;
+    flex-direction: column;
 }
 .servbox .valores{
     display: flex;
     flex-direction: column;
     color: var(--color-primary);
-    gap: 1.5rem;
     overflow-y: scroll;
     max-height: 380px;
 }
 .servbox .valores p{
-    padding-bottom: 10px;
-    border-bottom: solid 1px var(--color-primary);
+    padding-bottom: 3px;
+    
 }
 
 .servbox div{
     display: flex;
-    gap: 2rem;
     width: 400px;
     font-size: 10px;
 }
@@ -615,6 +615,10 @@ form input[type='file']{
 .desc{
     font-size: 15px;
 }
+.servbox .titleserv{
+    font-size: 20px;
+}
+
 @media only screen and (min-width: 800px) {
   
     .servbox{
@@ -625,7 +629,7 @@ form input[type='file']{
 
     }
     .servbox .titleserv{
-        font-size: 20px;
+        font-size: 30px;
     }
     .servbox .valores{
         display: flex;
