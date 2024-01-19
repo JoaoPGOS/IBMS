@@ -372,7 +372,8 @@ form input[type='file']{
     justify-content: center;
 }
 .contentgaleria img{
-    width: 300px;
+    width: 338px;
+    height: 600px;
 }
 
 .prodcontainer{
