@@ -82,7 +82,7 @@ def insere_gal():
 @app.route("/att", methods=['POST','GET'])
 def attinsert():
     if request.method == 'POST':
-        # Lida com o upload do PDF
+
         if 'ProHair_file' in request.files:
             pdf_file = request.files['ProHair_file']
             if pdf_file.filename != '' and allowed_file(pdf_file.filename):
@@ -93,11 +93,20 @@ def attinsert():
             if pdf_file.filename != '' and allowed_file(pdf_file.filename):
                 caminho_pdf = os.path.join(app.config['UPLOAD_FOLDER'], 'Fluence.pdf')
                 pdf_file.save(caminho_pdf)
-
+        if 'fluence_file2' in request.files:
+            pdf_file = request.files['fluence_file2']
+            if pdf_file.filename != '' and allowed_file(pdf_file.filename):
+                caminho_pdf = os.path.join(app.config['UPLOAD_FOLDER'], 'Fluence2.pdf')
+                pdf_file.save(caminho_pdf)
         if 'Nuance_file' in request.files:
             pdf_file = request.files['Nuance_file']
             if pdf_file.filename != '' and allowed_file(pdf_file.filename):
                 caminho_pdf = os.path.join(app.config['UPLOAD_FOLDER'], 'Nuance.pdf')
+                pdf_file.save(caminho_pdf)
+        if 'Nuance_file2' in request.files:
+            pdf_file = request.files['Nuance_file2']
+            if pdf_file.filename != '' and allowed_file(pdf_file.filename):
+                caminho_pdf = os.path.join(app.config['UPLOAD_FOLDER'], 'Nuance2.pdf')
                 pdf_file.save(caminho_pdf)
 
 
