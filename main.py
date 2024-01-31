@@ -47,9 +47,15 @@ def login_admin():
     if request.method == "POST":
         user = request.form.get('user')
         password = request.form.get('password')
+        page = request.form.get('page')
         if user == "admin" and password == "0000":
             session['admin'] = 1
-            return redirect("/inserir")
+            if page == "inserir":
+                return redirect("/inserir")
+            elif page == "galeria":
+                return redirect("/inseregaleria")
+            else:
+                return redirect("/att")
     else:
         return render_template('admin.html')
 
