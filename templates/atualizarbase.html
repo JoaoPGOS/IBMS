@@ -22,8 +22,7 @@
             Atualizar produtos
             <p>Produto: <input type="text" name="nome" id="nome" onkeyup="search(this.value)" onfocus="displayall()"></p>
             <div id="searched">{{prod_list | safe}}</div>
-            <p>Descrição: <input type="text" name="descricao" id="description"></p>
-            <p>Valor: <input type="text" name="valor" id="valor"></p>
+            <p>Descrição: <input type="text" name="descricao" id="desc"></p>
             <select name="marca" id="marca" onmouseover="changedisplayall()">
                 <option value="ProHair" >Pro Hair</option>
                 <option value="Nuance" >Nuance</option>
@@ -31,9 +30,6 @@
             </select>
             <input type="file" name="arquivo" id="" width="300px" height="300px" onmouseover="changedisplayall()">
             <p onmouseover="changedisplayall()">Se deseja deletar o produto, insira 1: <input type="text" name="delete" id="" value=""></p>
-            <label for="promocao">É promoção?</label>
-            <p onmouseover="changedisplayall()"><button type="button" onclick="promo('S')" id="S">Sim</button>
-            <button type="button" onclick="promo('N')" id="N">Não</button></p>
             <input type="hidden" value="Não" name="promocao" id="promocao">
             <input type="submit" value="Atualizar">
         </form>
@@ -41,10 +37,8 @@
     {{resp}}
     <img src="data:image/jpeg;base64,{{img}}" alt="" width="400px">
     <p>Produto: {{nomes}}</p>
-    <p>Valor: {{valor}}</p>
     <p>Descrição: {{desc}}</p>
     <p>Marca: {{marca}}</p>
-    <p>É promoção: {{promo}}</p>
 </div>
 </div>
     <div class="caixa">

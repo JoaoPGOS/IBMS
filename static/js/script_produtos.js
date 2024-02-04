@@ -42,16 +42,15 @@ function downloadFile(fileUrl) {
 
 
 
-function send(name,value){
-    textopadrao = `Bom dia, eu me interessei no produto ${name}, no valor de R$${value} e gostaria de fazer um orçamento.`
+function send(name){
+    textopadrao = `Bom dia, eu me interessei no produto ${name} e gostaria de fazer um orçamento.`
     window.open(` https://wa.me/553197486420?text=${textopadrao}`, '_blank');
 }
-function inserecarrinho(nome, valor){
+function inserecarrinho(nome){
     let item = JSON.parse(localStorage.getItem(localStorageCarrinho) || "[]")
 
     item.push({
-        name: nome,
-        value: valor
+        name: nome
     });
 
     localStorage.setItem(localStorageCarrinho,JSON.stringify(item))
@@ -74,9 +73,9 @@ function sendcarrinho(){
     localStorage.setItem(localStorageCarrinho,JSON.stringify(produtos))
     carrinho = ''
     for(j=0;j != produtos.length;j++){
-        carrinho+= `${produtos[j]['name']} - R$${produtos[j]['value']}%0A`
+        carrinho+= `${produtos[j]['name']}%0A`
     }
-    textopadrao = `Bom dia, eu me interessei nos produtos:%0A${carrinho}no valor total de ${document.getElementById('total').innerHTML} e gostaria de fazer um orçamento.`
+    textopadrao = `Bom dia, eu me interessei nos produtos:%0A${carrinho} e gostaria de fazer um orçamento.`
     window.open(` https://wa.me/553197486420?text=${textopadrao}`, '_blank');
 }
 

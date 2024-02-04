@@ -395,8 +395,7 @@ form input[type='file']{
 .prodcontainer div{
     background-color: var(--color-1);
     padding: 15px;
-    max-width: 600px;
-    border-radius: 20px;
+    max-width: 370px !important;
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -414,10 +413,13 @@ form input[type='file']{
     flex-direction: column;
     transition: .5s;
 }
+.prodcontainer .searched{
+    max-width: 330px !important;
+}
 .prodcontainer .searched:hover{
     transition: .5s;
     padding: 5px;
-    border: 1px solid var(--color-3);
+    border: 2px solid #879200;
     transition: .5s;
 
 }
@@ -531,20 +533,18 @@ form input[type='file']{
     display: flex;
     gap: 1rem;
     color: var(--color-primary);
-    border: var(--color-3) 1px solid;
+    border: #879200 2px solid;
     width: fit-content;
     padding: 5px;
-    border-radius: 20px;
 }
 .filtros img{
     width: 120px;
-    border-radius: 20px;
     cursor: pointer;
     transition: .2s;
     height: 120px;
 }
 .filtros img:hover{
-    border: 2px solid green;
+    border: 2px solid #879200;
     transition: .2s;
 }
 

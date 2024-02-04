@@ -66,7 +66,6 @@ def inserir():
         return redirect("/admin")
     else:
         nome = request.form.get('nome')
-        valor = request.form.get('valor')
         desc = request.form.get('descricao')
         delete = request.form.get('delete')
         marca = request.form.get('marca')
@@ -78,16 +77,16 @@ def inserir():
             image_string = base64.b64encode(file.read()).decode('utf-8')
         else:
             image_string = ''
-        promo = request.form.get('promocao')
+
 
         if servico != None:
             resp = msl.insere_serv(servico,classe,delete_serv)
-            return render_template('atualizarbase.html',prod_list=msl.gera_prod_list(),resp_serv=resp,nome_serv=servico,nomes=f'',valor='',promo='', img='',marca='', desc='', categoria='', resp='Insira/Atualize/Delete o produto')
+            return render_template('atualizarbase.html',prod_list=msl.gera_prod_list(),resp_serv=resp,nome_serv=servico,nomes=f'', img='',marca='', desc='', categoria='', resp='Insira/Atualize/Delete o produto')
         if nome != None:
-            res = msl.insere_prod(nome,valor,image_string,promo,delete,marca,desc)
-            return render_template('atualizarbase.html',prod_list=msl.gera_prod_list(),nomes=f'{nome}',valor=valor,promo=promo, img=image_string,resp=res,marca=marca,desc=desc, categoria=classe, resp_serv="Insira/Atualize/Delete o serviço",nome_serv="")
+            res = msl.insere_prod(nome,image_string,delete,marca,desc)
+            return render_template('atualizarbase.html',prod_list=msl.gera_prod_list(),nomes=f'{nome}', img=image_string,resp=res,marca=marca,desc=desc, categoria=classe, resp_serv="Insira/Atualize/Delete o serviço",nome_serv="")
         else:
-            return render_template('atualizarbase.html',prod_list=msl.gera_prod_list(),nomes=f'',valor='',promo='', img='',marca='',desc='', resp='Insira/Atualize/Delete o produto')
+            return render_template('atualizarbase.html',prod_list=msl.gera_prod_list(),nomes=f'', img='',marca='',desc='', resp='Insira/Atualize/Delete o produto')
 
 @app.route("/inseregaleria", methods=['POST','GET'])
 def insere_gal():

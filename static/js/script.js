@@ -87,8 +87,8 @@ function changedisplayall(){
     document.getElementById('searched').style.transition = '.5s'
     document.getElementById('searched').style.border = 'none'
 }
-function insert_to(name,valor){
+function insert_to(name,desc){
     document.getElementById('nome').value = name
-    document.getElementById('valor').value = valor
+    document.getElementById('desc').value = desc
     changedisplayall();
 } 
