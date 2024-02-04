@@ -4,7 +4,7 @@ document.getElementById('downloadExcel').addEventListener('click', function() {
     // Substitua 'caminho/para/sua/planilha.xlsx' pelo caminho real do seu arquivo Excel
     var planilhaUrl = '/static/archives/Nuance.pdf';
     downloadFile(planilhaUrl);
-    downloadFile('/static/archives/Nuance2.pdf');
+
 });
 
 document.getElementById('downloadPDF').addEventListener('click', function() {

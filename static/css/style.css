@@ -689,3 +689,36 @@ form input[type='file']{
     transition: 0px;
     overflow-y: scroll;
 }
+
+.container .downloadsbox{
+    display: flex;
+    flex-direction: column;
+    border: #879200 solid 2px;
+    padding: 10px;
+    width: fit-content;
+    align-self: center;
+}
+.container .downloadsbox p{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    gap: 1rem;
+}
+.container .downloadsbox p img{
+    box-shadow: #9c9c9c 1px 1px 1px 1px;
+}
+.container .downloadsbox p button{
+    border: #879200 2px solid;
+    padding: 7px;
+    background-color:#fdff80 ;
+    cursor: pointer;
+    transition: .5s;
+}
+.container .downloadsbox p button:hover{
+    background-color: #fcff4b;
+    padding: 10px;
+    transition: .5s;
+}
+.saibamais{
+    font-weight: bold;
+}

@@ -131,11 +131,6 @@ def attinsert():
                 if pdf_file.filename != '' and allowed_file(pdf_file.filename):
                     caminho_pdf = os.path.join(app.config['UPLOAD_FOLDER'], 'Nuance.pdf')
                     pdf_file.save(caminho_pdf)
-            if 'Nuance_file2' in request.files:
-                pdf_file = request.files['Nuance_file2']
-                if pdf_file.filename != '' and allowed_file(pdf_file.filename):
-                    caminho_pdf = os.path.join(app.config['UPLOAD_FOLDER'], 'Nuance2.pdf')
-                    pdf_file.save(caminho_pdf)
         return render_template('atualizatabelas.html')
 
 if __name__ == "__main__":
