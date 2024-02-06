@@ -96,10 +96,11 @@ def insere_gal():
         if request.method == 'POST':
             imagem = request.files['imagem']
             imagem_base64 = base64.b64encode(imagem.read()).decode('utf-8')
+            video = request.form.get("link")
         else:
             imagem_base64 = ''
         if imagem_base64 != '':
-            msl.insere_galeria(imagem_base64)
+            msl.insere_galeria(imagem_base64, video)
             return render_template('inseregaleria.html',imagem=imagem_base64)
         else:
             return render_template('inseregaleria.html',imagem='')

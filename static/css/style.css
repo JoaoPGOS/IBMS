@@ -374,7 +374,16 @@ form input[type='file']{
 .contentgaleria img{
     width: 338px;
     height: 600px;
+    transition: .5s;
 }
+
+.contentgaleria img:hover{
+    width: 358px;
+    height: 620px;
+    opacity: 0.9;
+    transition: .5s;
+}
+
 
 .prodcontainer{
     display: flex;
@@ -689,8 +698,6 @@ form input[type='file']{
     transition: 0px;
     overflow-y: scroll;
 }
-<<<<<<< HEAD
-
 .container .downloadsbox{
     display: flex;
     flex-direction: column;
@@ -723,5 +730,3 @@ form input[type='file']{
 .saibamais{
     font-weight: bold;
 }
-=======
->>>>>>> ae754f190eb20c200199c77ba359d069cfe97dbc

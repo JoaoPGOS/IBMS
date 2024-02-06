@@ -263,7 +263,7 @@ def gera_prod_list():
     except mysql.connector.Error as err:
         print(f"Erro na conexão: {err}")
 
-def insere_galeria(imagem):
+def insere_galeria(imagem, video):
     import mysql.connector
 
 
@@ -284,7 +284,7 @@ def insere_galeria(imagem):
         print("Conexão bem-sucedida!")
 
         cursor = conn.cursor()
-        cursor.execute(f"INSERT INTO Galeria VALUES(0,'','{imagem}')")
+        cursor.execute(f"INSERT INTO Galeria VALUES(0,'','{imagem}','{video}')")
 
         conn.commit()
 
@@ -321,7 +321,7 @@ def gera_galeria():
         galeria = ''
 
         for row in table:
-            galeria+=f"<img src='data:image/jpeg;base64,{row[2]}'>"
+            galeria+=f"<a href='{row[3]}'><img src='data:image/jpeg;base64,{row[2]}' ></a>"
         conn.close()
         return galeria
     except mysql.connector.Error as err:
