@@ -353,7 +353,24 @@ form input[type='submit']:hover{
 form input[type='file']{
     cursor: pointer;
 }
+.listaimg{
+    overflow-y: scroll;
+    max-height: 500px;
+}
 
+.listaimg div{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    gap: .5rem;
+    border: #111 2px solid;
+    padding: 10px;
+    border-radius: 15px;
+}
+.listaimg div img{
+    width: 100px;
+    height: 150px;
+}
 
 .caixa div{
     font-size: larger;
@@ -363,6 +380,12 @@ form input[type='file']{
     width: 400px;
     padding: 20px;
     border-radius: 20px;
+}
+.caixa img{
+    border: #111 solid 2px;
+    border-radius: 15px;
+    width: 200px;
+    height: 300px;
 }
 .contentgaleria{
     display: flex;

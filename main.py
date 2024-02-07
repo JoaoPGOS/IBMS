@@ -1,5 +1,5 @@
 
-from flask import Flask, redirect, render_template, request, session
+from flask import Flask, redirect, render_template, request, session, jsonify
 import base64
 import backend as msl
 import os
@@ -101,9 +101,33 @@ def insere_gal():
             imagem_base64 = ''
         if imagem_base64 != '':
             msl.insere_galeria(imagem_base64, video)
-            return render_template('inseregaleria.html',imagem=imagem_base64)
+            return render_template('inseregaleria.html',imagem=imagem_base64,listaimg=msl.lista_galeria())
         else:
-            return render_template('inseregaleria.html',imagem='')
+            return render_template('inseregaleria.html',imagem='',listaimg=msl.lista_galeria())
+        
+
+@app.route("/atualizagaleria", methods=['POST'])
+def atualizagaleria():
+
+    data = request.json
+    
+    img = data.get('img')
+    video = data.get('video')
+    id = data.get('id')
+    print(img, video, id)
+    msl.atualiza_galeria(img, video, id)
+    return 'ok'
+    
+@app.route("/deleteimg", methods=['POST'])
+def deleteimg():
+    data = request.json
+    id = data.get('id')
+
+    msl.deleteimgfromgalery(id)
+
+    return 'ok'
+
+    
 
 @app.route("/att", methods=['POST','GET'])
 def attinsert():

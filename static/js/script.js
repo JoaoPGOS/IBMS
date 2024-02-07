@@ -92,3 +92,79 @@ function insert_to(name,desc){
     document.getElementById('desc').value = desc
     changedisplayall();
 } 
+
+function updateimg(id) {
+    var imgInput = document.getElementById(`imgupdate_${id}`);
+    var videoInput = document.getElementById(`videolink_${id}`);
+    var imgFile = imgInput.files[0];
+    var videoLink = videoInput.value;
+
+    var reader = new FileReader();
+
+
+    reader.onloadend = function() {
+
+        var base64Img = reader.result.split(',')[1]; 
+
+        var data = {
+            img: base64Img || "", 
+            video: videoLink,
+            id: id
+        };
+
+        // Enviar os dados para o endpoint /atualizagaleria
+        fetch('/atualizagaleria', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (response.ok) {
+                window.location.reload();
+            } else {
+                console.error('Erro ao atualizar a galeria');
+            }
+        })
+        .catch(error => {
+            console.error('Erro na solicitação:', error);
+        });
+    };
+
+
+    if (imgFile) {
+
+        reader.readAsDataURL(imgFile);
+    } else {
+
+        reader.onloadend();
+    }
+}
+
+function deleteimg(id) {
+
+    var data = {
+        id: id
+    };
+
+    fetch('/deleteimg', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (response.ok) {
+
+           window.location.reload();
+        } else {
+            console.error('Erro ao excluir a imagem');
+        }
+    })
+    .catch(error => {
+        console.error('Erro na solicitação:', error);
+    });
+}
+

@@ -321,9 +321,109 @@ def gera_galeria():
         galeria = ''
 
         for row in table:
-            galeria+=f"<a href='{row[3]}'><img src='data:image/jpeg;base64,{row[2]}' ></a>"
+            galeria+=f"<a href='{row[3]}'><img src='data:image/jpeg;base64,{row[2]}' target='_blank'></a>"
         conn.close()
         return galeria
+    except mysql.connector.Error as err:
+        print(f"Erro na conexão: {err}")
+        return 'falha'
+
+def lista_galeria():
+    import mysql.connector
+
+
+    host = 'viaduct.proxy.rlwy.net'
+    port = 58177
+    database = 'railway'
+    user = 'root'
+    password = 'HhBBh1gGeBegbEAeh-cH45b-1CfG45bc'
+    try:
+        conn = mysql.connector.connect(
+            host=host,
+            port=port,
+            user=user,
+            password=password,
+            database=database,
+            auth_plugin='caching_sha2_password'
+        )
+
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM Galeria")
+        table = cursor.fetchall()
+
+        lista_galeria = ''
+
+        for row in table:
+            lista_galeria+=f"<div><img src='data:image/jpeg;base64,{row[2]}'><input type='file' name='imgupdate' id='imgupdate_{row[0]}'><input type='text' name='videolink' id='videolink_{row[0]}' placeholder='Insira o link para o vídeo aqui'><button type='button' id='{row[0]}' onclick='updateimg(this.id)'>Atualizar</button><button type='button' id='{row[0]}' onclick='deleteimg(this.id)'>Deletar</button></div><br>"
+        conn.close()
+        return lista_galeria
+    except mysql.connector.Error as err:
+        print(f"Erro na conexão: {err}")
+        return 'falha'
+    
+def atualiza_galeria(img, video, id):
+    import mysql.connector
+
+
+    host = 'viaduct.proxy.rlwy.net'
+    port = 58177
+    database = 'railway'
+    user = 'root'
+    password = 'HhBBh1gGeBegbEAeh-cH45b-1CfG45bc'
+    try:
+        conn = mysql.connector.connect(
+            host=host,
+            port=port,
+            user=user,
+            password=password,
+            database=database,
+            auth_plugin='caching_sha2_password'
+        )
+
+        cursor = conn.cursor()
+        if img != '' and video != '':
+            cursor.execute("UPDATE Galeria SET imagem = %s, video = %s WHERE id = %s", (img, video, id))
+            print('a')
+        elif img == '' and video != '':
+            cursor.execute("UPDATE Galeria SET video = %s WHERE id = %s", (video, id))
+            print('b')
+        else:
+            cursor.execute("UPDATE Galeria SET imagem = %s WHERE id = %s", (img, id))
+            print('c')
+
+        # Commitar as mudanças na base de dados
+        conn.commit()
+        conn.close()
+        return 'ok'
+    except mysql.connector.Error as err:
+        print(f"Erro na conexão: {err}")
+        return 'falha'
+    
+def deleteimgfromgalery(id):
+    import mysql.connector
+
+
+    host = 'viaduct.proxy.rlwy.net'
+    port = 58177
+    database = 'railway'
+    user = 'root'
+    password = 'HhBBh1gGeBegbEAeh-cH45b-1CfG45bc'
+    try:
+        conn = mysql.connector.connect(
+            host=host,
+            port=port,
+            user=user,
+            password=password,
+            database=database,
+            auth_plugin='caching_sha2_password'
+        )
+
+        cursor = conn.cursor()
+        cursor.execute(f"DELETE FROM Galeria WHERE id = '{id}'")
+
+        conn.commit()
+        conn.close()
+        return 'ok'
     except mysql.connector.Error as err:
         print(f"Erro na conexão: {err}")
         return 'falha'
