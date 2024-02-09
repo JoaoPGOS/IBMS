@@ -167,10 +167,7 @@ body::-webkit-scrollbar-thumb {
     gap: 2rem;
     flex-direction: column;
 }
-.container .content .aboutusimg{
-    width: 400px;
-    align-self: center;
-}
+
 
 .sideimagesprom div{
     border-radius: 20px;
