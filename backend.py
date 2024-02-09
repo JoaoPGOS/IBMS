@@ -82,7 +82,7 @@ def gera_produtos():
 
         cursor = conn.cursor()
 
-        cursor.execute("SELECT * FROM prod_info")
+        cursor.execute("SELECT * FROM prod_info ORDER BY name ASC")
         table_prod = cursor.fetchall()
 
         produtos = """"""
