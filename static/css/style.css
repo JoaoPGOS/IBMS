@@ -169,7 +169,7 @@ body::-webkit-scrollbar-thumb {
 }
 .container .box .content{
     display: flex;
-    flex-direction: column;
+    flex-direction: column !important;
 }
 
 .container .content .aboutusimg{
