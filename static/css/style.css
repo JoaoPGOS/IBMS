@@ -167,8 +167,8 @@ body::-webkit-scrollbar-thumb {
     gap: 2rem;
     flex-direction: column;
 }
-.container .content video{
-    width: 300px;
+.container .content .aboutusimg{
+    width: 400px;
     align-self: center;
 }
 
