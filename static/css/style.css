@@ -171,6 +171,7 @@ body::-webkit-scrollbar-thumb {
     display: flex;
     flex-direction: column;
     max-width: 400px;
+    flex-direction: column !important;
 }
 
 .container .content .aboutusimg{
