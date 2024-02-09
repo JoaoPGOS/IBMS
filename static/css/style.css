@@ -170,10 +170,11 @@ body::-webkit-scrollbar-thumb {
 .container .box .content{
     display: flex;
     flex-direction: column;
+    max-width: 400px;
 }
 
 .container .content .aboutusimg{
-    width: 400px;
+    width: 300px;
     align-self: center;
 }
 
@@ -243,7 +244,7 @@ body::-webkit-scrollbar-thumb {
         display: flex;
         flex-direction: row;
     }
-    .container .content video{
+    .container .content img{
         width: 600px;
 
     }
