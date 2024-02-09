@@ -167,6 +167,11 @@ body::-webkit-scrollbar-thumb {
     gap: 2rem;
     flex-direction: column;
 }
+.container .box .content{
+    display: flex;
+    flex-direction: column;
+}
+
 .container .content .aboutusimg{
     width: 400px;
     align-self: center;
