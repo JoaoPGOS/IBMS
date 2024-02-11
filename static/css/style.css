@@ -11,6 +11,9 @@
     --color-3:#111;
     --color-text:#757575;
     --color-navbar:#363636;
+    --color-blue_1:#3F448C;
+    --color-blue_2:#7178df;
+    --color-blue_3:#bbbeef;
 
 
 } 
@@ -226,12 +229,7 @@ body::-webkit-scrollbar-thumb {
     color: darkgreen;
     transition: .5s;
 }
-.caixa{
-    display: flex;
-    font-weight: bold;
-    flex-direction: column;
-    gap: 1rem;
-}
+
 #img_home{
     display: flex;
     align-self: center;
@@ -299,66 +297,56 @@ body::-webkit-scrollbar-thumb {
     
 }
 
-
-
-
-form{
+.caixa{
+    border: var(--color-blue_1) 2px solid;
+    padding: 20px;
+    background-color: rgba(187, 190, 239,0.5);
+    display: flex;
+    font-weight: bold;
+    gap: 1rem;
+    color: var(--color-blue_1) !important;
+}
+.caixa form #marca{
+    border: var(--color-blue_1) 1px solid;
+    color: var(--color-blue_1);
+}
+.caixa div{
     display: flex;
     flex-direction: column;
-    width: 400px;
-    align-items: center;
-    background-color: var(--color-1);
-    padding: 20px;
-    border-radius: 20px;
     gap: 1rem;
-    color: var(--color-primary);
-    font-weight: bold;
-    border: #111 solid 2px;
+    
 }
-
-form input[type='text']{
-    width: 300px;
+.caixa input[type="text"]{
+    border: 1px solid var(--color-blue_1);
+    height: 20px;
+}
+.caixa div img{
+    border: 2px solid var(--color-blue_1);
+    width: 100px;
+    height: 100px;
+}
+.caixa #searched div:hover{
+    background-color: var(--color-blue_1);
+}
+.caixa form input[type="submit"]{
+    color: var(--color-blue_3);
+    background-color: var(--color-blue_1);
     padding: 5px;
-    border-radius: 10px;
-    border: solid 1px var(--color-primary);
-    font-weight: bold;
-}
-
-form button{
-    background-color: var(--color-1);
-    color: var(--color-primary);
     border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    font-size: 20px;
-    padding: 5px;
     font-weight: bold;
     transition: .5s;
-}
-form #N{
-    color: var(--color-1);
-    background-color: var(--color-primary);
-
-}
-
-form input[type='submit']{
-    background-color: var(--color-primary);
-    color: var(--color-1);
-    border: none;
-    border-radius: 15px;
     cursor: pointer;
-    font-size: 20px;
-    padding: 5px;
-    font-weight: bold;
+}
+.caixa form input[type="submit"]:hover{
+    color: var(--color-blue_1);
+    background-color: var(--color-blue_3);
     transition: .5s;
 }
-form input[type='submit']:hover{
-    color: var(--color-primary);
-    background-color: var(--color-1);
-    transition: .5s;
-}
-form input[type='file']{
-    cursor: pointer;
+
+.caixa img{
+    border: 2px solid var(--color-blue_1);
+    width: 338px;
+    height: 600px;
 }
 .listaimg{
     overflow-y: scroll;
@@ -370,35 +358,40 @@ form input[type='file']{
     flex-direction: column;
     width: 300px;
     gap: .5rem;
-    border: #111 2px solid;
+    border: var(--color-blue_1) 2px solid;
     padding: 10px;
-    border-radius: 15px;
+    background-color: rgba(187, 190, 239,0.5);
 }
 .listaimg div img{
-    width: 100px;
+    width: 150px;
     height: 150px;
 }
-
-.caixa div{
-    font-size: larger;
+.listaimg button{
+    color: var(--color-blue_3);
+    background-color: var(--color-blue_1);
+    padding: 5px;
+    border: none;
     font-weight: bold;
-    background-color: var(--color-primary);
-    color: var(--color-1);
-    width: 400px;
-    padding: 20px;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
+    transition: .5s;
+    cursor: pointer;
 }
-.caixa div img{
-    width: 300px !important;
+.listaimg input[type="text"]{
+    border: 1px solid var(--color-blue_1);
+    height: 20px;
 }
-.caixa img{
-    border: #111 solid 2px;
-    border-radius: 15px;
-    width: 200px;
-    height: 300px;
+
+.listaimg button:hover{
+    color: var(--color-blue_1);
+    background-color: var(--color-blue_3);
+    transition: .5s;
 }
+@media only screen and (min-width: 800px) {
+    .caixa div img{
+        width: 300px;
+        height: 300px;
+    }
+}
+
 .contentgaleria{
     display: flex;
     flex-wrap: wrap;
@@ -719,10 +712,13 @@ form input[type='file']{
     background-color: transparent !important;
     cursor: pointer;
     padding: 5px !important;
+    transition: .5s;
 }
 .pesquisa:hover{
-    background-color: #bdbaba !important;
+    background-color: var(--color-blue_1) !important;
     padding: 8px !important;
+    color: var(--color-blue_3) !important;
+    transition: .5s;
 }
 #searched{
 

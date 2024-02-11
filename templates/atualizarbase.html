@@ -20,9 +20,8 @@
     <div class="caixa">
         <form action="" method="post" enctype="multipart/form-data">
             Atualizar produtos
-            <p>Produto: <input type="text" name="nome" id="nome" onkeyup="search(this.value)" onfocus="displayall()"></p>
+            <p>Produto: <input type="text" name="nome" id="nome" onkeyup="search(this.value)" onfocus="displayall()">Descrição: <input type="text" name="descricao" id="desc"></p>
             <div id="searched">{{prod_list | safe}}</div>
-            <p>Descrição: <input type="text" name="descricao" id="desc"></p>
             <select name="marca" id="marca" onmouseover="changedisplayall()">
                 <option value="ProHair" >Pro Hair</option>
                 <option value="Nuance" >Nuance</option>
