@@ -170,12 +170,12 @@ body::-webkit-scrollbar-thumb {
 .container .box .content{
     display: flex;
     flex-direction: column;
-    width: 300px !important;
+    width: 400px;
     flex-direction: column !important;
 }
 
-.container .box .content .aboutusimg{
-    width: 300px !important;
+.container .content .aboutusimg{
+    width: 300px;
     align-self: center;
 }
 
@@ -241,12 +241,13 @@ body::-webkit-scrollbar-thumb {
 }
 
 @media only screen and (min-width: 800px) {
-    .container .box .content{
+    .container .content{
         display: flex;
         flex-direction: row;
+        width: 1000px !important;
     }
-    .container .box .content .aboutusimg{
-        width: 500px !important;
+    .container .content img{
+        width: 600px;
 
     }
     .sideimagescontainerservices{
