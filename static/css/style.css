@@ -387,6 +387,11 @@ form input[type='file']{
     width: 400px;
     padding: 20px;
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.caixa div img{
+    width: 300px !important;
 }
 .caixa img{
     border: #111 solid 2px;
