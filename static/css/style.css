@@ -321,13 +321,19 @@ body::-webkit-scrollbar-thumb {
     padding: 10px;
     display: flex;
     align-self: center;
-    width: 500px;
+    width: 300px;
     background: linear-gradient(45deg,#00E3CC,#32A89C,#009688,#44E3D3);
     background-size: 400% 100%;
     animation: degretitle 10s linear infinite alternate;
 
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+@media only screen and (min-width: 800px) {
+    #title{
+        width: 500px;
+    }
 }
 
 @keyframes degretitle {
