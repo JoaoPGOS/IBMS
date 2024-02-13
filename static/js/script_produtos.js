@@ -115,7 +115,7 @@ function filtroProhair(){
         }
     }
     document.getElementById('fluence_bt').style.border = 'none'
-    document.getElementById('pro_hair').style.border = '2px green solid'
+    document.getElementById('pro_hair').style.border = '2px var(--color-blue_2) solid'
     document.getElementById('nuance_bt').style.border = 'none'
 }
 
@@ -141,7 +141,7 @@ function filtroFluence(){
         }
     }
     
-    document.getElementById('fluence_bt').style.border = '2px green solid'
+    document.getElementById('fluence_bt').style.border = '2px var(--color-blue_2) solid'
     document.getElementById('nuance_bt').style.border = 'none'
     document.getElementById('pro_hair').style.border = 'none'
 }
@@ -168,7 +168,7 @@ function filtroNuance(){
         }
     }
     document.getElementById('pro_hair').style.border = 'none'
-    document.getElementById('nuance_bt').style.border = '2px green solid'
+    document.getElementById('nuance_bt').style.border = '2px var(--color-blue_2) solid'
     document.getElementById('fluence_bt').style.border = 'none'
 }
 

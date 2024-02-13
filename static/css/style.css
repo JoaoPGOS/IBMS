@@ -1,5 +1,6 @@
+
 *{
-    font-family: 'Playfair Display', serif;
+    font-family: "Poppins", sans-serif;
     font-size: 12px;
 }
 :root{
@@ -11,15 +12,13 @@
     --color-3:#111;
     --color-text:#757575;
     --color-navbar:#363636;
-    --color-blue_1:#3F448C;
-    --color-blue_2:#7178df;
-    --color-blue_3:#bbbeef;
-
-
+    --color-blue_1:#005954;
+    --color-blue_2:#338b85;
+    --color-blue_3:#d5ffff;
 } 
 
 body{
-    background-color: var(--color-bc);
+background-color: var(--color-1);
 }
 
 .navbar{
@@ -53,10 +52,21 @@ body{
 }
 .navbar a:hover{
     transition: .5s;
-    color: var(--color-2);
+    background: linear-gradient(45deg,#00E3CC,#32A89C,#009688,#44E3D3);
+    background-size: 400% 100%;
+    animation: degretitle 10s linear infinite alternate;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 .active{
-    color: var(--color-2) !important;
+
+    background: linear-gradient(45deg,#00E3CC,#32A89C,#009688,#44E3D3);
+    background-size: 400% 100%;
+    animation: degretitle 10s linear infinite alternate;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 .sideimages div{
     border-radius: 20px;
@@ -122,12 +132,24 @@ body{
     writing-mode: vertical-rl;
     font-size: 30px;
     padding-top: 10px;
+    background: linear-gradient(45deg,#00E3CC,#32A89C,#009688,#44E3D3);
+    background-size: 400% 100%;
+    animation: degretitle 10s linear infinite alternate;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .sideimagescontainerservices .sideimages div img{
     width: 190px;
     height: 350px;
     object-fit: cover;
+    background: linear-gradient(45deg,#00E3CC,#32A89C,#009688,#44E3D3);
+    background-size: 400% 100%;
+    animation: degretitle 10s linear infinite alternate;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 body::-webkit-scrollbar {
@@ -154,11 +176,17 @@ body::-webkit-scrollbar-thumb {
 }
 
 .container .title{
-    font-family: 'Playfair Display', serif;
+    font-family: "Poppins", sans-serif;
     font-size: 23px;
     color: var(--color-primary);
     font-weight: bold;
     text-align: center;
+    background: linear-gradient(45deg,#00E3CC,#32A89C,#009688,#44E3D3);
+    background-size: 400% 100%;
+    animation: degretitle 10s linear infinite alternate;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .container .content{
@@ -200,8 +228,8 @@ body::-webkit-scrollbar-thumb {
     gap: 1rem;
     flex-direction: column;
     /* background-color: var(--color-3); */
-    border-top:1.5px solid var(--color-3);
-    border-bottom: 1.5px solid var(--color-3);
+    border-top:2px solid var(--color-blue_2);
+    border-bottom: 2px solid var(--color-blue_2);
     padding: 20px;
     border-radius: 20px;
     color: var(--color-primary);
@@ -285,16 +313,31 @@ body::-webkit-scrollbar-thumb {
 
 
 #title{
-    font-family: 'Playfair Display', serif;
-    font-size: 30px;
+    font-family: "Poppins", sans-serif;
+    font-size: 50px;
     color: var(--color-primary);
     width: fit-content;
     border-radius: 10px;
     padding: 10px;
     display: flex;
     align-self: center;
-    width: 270px;
-    
+    width: 500px;
+    background: linear-gradient(45deg,#00E3CC,#32A89C,#009688,#44E3D3);
+    background-size: 400% 100%;
+    animation: degretitle 10s linear infinite alternate;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@keyframes degretitle {
+    0%{
+        background-position-x: 0%;
+    }
+
+    100%{
+        background-position: 400%;
+    }
 }
 
 .caixa{
@@ -431,11 +474,17 @@ body::-webkit-scrollbar-thumb {
 
 }
 .title{
-    font-family: 'Playfair Display', serif;
+    font-family: "Poppins", sans-serif;
     font-size: 23px;
     color: var(--color-primary);
-    font-weight: bold;
+    font-weight: bolder;
     text-align: center;
+    background: linear-gradient(45deg,#00E3CC,#32A89C,#009688,#44E3D3);
+    background-size: 400% 100%;
+    animation: degretitle 10s linear infinite alternate;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 @media only screen and (min-width: 800px) {
@@ -501,7 +550,7 @@ body::-webkit-scrollbar-thumb {
 .prodcontainer .searched:hover{
     transition: .5s;
     padding: 5px;
-    border: 2px solid #879200;
+    border: 2px solid var(--color-blue_2);
     transition: .5s;
 
 }
@@ -550,7 +599,7 @@ body::-webkit-scrollbar-thumb {
     color: var(--color-1);
 }
 .carrinho #c:hover{
-    color:green;
+    color:var(--color-blue_2);
     cursor: pointer;
 }
 .carrinho #x:hover{
@@ -615,7 +664,7 @@ body::-webkit-scrollbar-thumb {
     display: flex;
     gap: 1rem;
     color: var(--color-primary);
-    border: #879200 2px solid;
+    border: var(--color-blue_2) 2px solid;
     width: fit-content;
     padding: 5px;
 }
@@ -626,7 +675,7 @@ body::-webkit-scrollbar-thumb {
     height: 120px;
 }
 .filtros img:hover{
-    border: 2px solid #879200;
+    border: 2px solid var(--color-blue_2);
     transition: .2s;
 }
 
@@ -639,7 +688,12 @@ body::-webkit-scrollbar-thumb {
 .prod_name{
     font-size: 20px;
     font-weight: bolder;
-    color: var(--color-primary);
+    background: linear-gradient(45deg,#00E3CC,#32A89C,#009688,#44E3D3);
+    background-size: 400% 100%;
+    animation: degretitle 10s linear infinite alternate;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .prod_value{
@@ -658,7 +712,7 @@ body::-webkit-scrollbar-thumb {
     cursor: pointer;
 }
 .box .serv svg:hover{
-    color: darkgreen;
+    color: var(--color-blue_2);
     transition: .5s;
 }
 .servbox{
@@ -700,6 +754,13 @@ body::-webkit-scrollbar-thumb {
 }
 .servbox .titleserv{
     font-size: 20px;
+    font-weight: bolder;
+    background: linear-gradient(45deg,#00E3CC,#32A89C,#009688,#44E3D3);
+    background-size: 400% 100%;
+    animation: degretitle 10s linear infinite alternate;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 @media only screen and (min-width: 800px) {
