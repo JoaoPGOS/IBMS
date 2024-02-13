@@ -438,3 +438,134 @@ def deleteimgfromgalery(id):
     except mysql.connector.Error as err:
         print(f"Erro na conexão: {err}")
         return 'falha'
+    
+def insere_dicas(link, imagem):
+    import mysql.connector
+
+    host = 'viaduct.proxy.rlwy.net'
+    port = 58177
+    database = 'railway'
+    user = 'root'
+    password = 'HhBBh1gGeBegbEAeh-cH45b-1CfG45bc'
+    
+    try:
+        conn = mysql.connector.connect(
+            host=host,
+            port=port,
+            user=user,
+            password=password,
+            database=database,
+            auth_plugin='caching_sha2_password'
+        )
+
+        cursor = conn.cursor()
+        # Usando parâmetros na consulta SQL para evitar injeção de SQL
+        sql = "INSERT INTO Dicas (link, imagem) VALUES (%s, %s)"
+        data = (link, imagem)
+        cursor.execute(sql, data)
+
+        conn.commit()
+        conn.close()
+        return 'sucesso'
+    except mysql.connector.Error as err:
+        print(f"Erro na conexão: {err}")
+        return 'falha'
+
+
+def gera_dicas():
+    import mysql.connector
+
+
+    host = 'viaduct.proxy.rlwy.net'
+    port = 58177
+    database = 'railway'
+    user = 'root'
+    password = 'HhBBh1gGeBegbEAeh-cH45b-1CfG45bc'
+    try:
+        conn = mysql.connector.connect(
+            host=host,
+            port=port,
+            user=user,
+            password=password,
+            database=database,
+            auth_plugin='caching_sha2_password'
+        )
+
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM Dicas")
+        table = cursor.fetchall()
+        dicas = ''
+
+        for row in table:
+            dicas+= f"<a href='{row[1]}' target='_blank'><img src='data:image/jpeg;base64,{row[2]}'></a>"
+
+        conn.commit()
+        conn.close()
+        return dicas
+    except mysql.connector.Error as err:
+        print(f"Erro na conexão: {err}")
+        return 'falha'  
+
+
+def lista_dicas():
+    import mysql.connector
+
+
+    host = 'viaduct.proxy.rlwy.net'
+    port = 58177
+    database = 'railway'
+    user = 'root'
+    password = 'HhBBh1gGeBegbEAeh-cH45b-1CfG45bc'
+    try:
+        conn = mysql.connector.connect(
+            host=host,
+            port=port,
+            user=user,
+            password=password,
+            database=database,
+            auth_plugin='caching_sha2_password'
+        )
+
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM Dicas")
+        table = cursor.fetchall()
+        lista_dicas = ''
+
+        for row in table:
+            lista_dicas+= f"<div><img src='data:image/jpeg;base64,{row[2]}'><button id='{row[0]}' onclick='deletedicas(this.id)'>Apagar</button></div><br>"
+
+        conn.commit()
+        conn.close()
+        return lista_dicas
+    except mysql.connector.Error as err:
+        print(f"Erro na conexão: {err}")
+        return 'falha'  
+    
+def delete_dicas(id):
+    import mysql.connector
+
+
+    host = 'viaduct.proxy.rlwy.net'
+    port = 58177
+    database = 'railway'
+    user = 'root'
+    password = 'HhBBh1gGeBegbEAeh-cH45b-1CfG45bc'
+    try:
+        conn = mysql.connector.connect(
+            host=host,
+            port=port,
+            user=user,
+            password=password,
+            database=database,
+            auth_plugin='caching_sha2_password'
+        )
+
+        cursor = conn.cursor()
+        cursor.execute(f"DELETE FROM Dicas WHERE id = '{id}'")
+
+        conn.commit()
+        conn.close()
+        return 'ok'
+    except mysql.connector.Error as err:
+        print(f"Erro na conexão: {err}")
+        return 'falha'

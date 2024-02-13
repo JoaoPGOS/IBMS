@@ -55,6 +55,8 @@ def login_admin():
                 return redirect("/inserir")
             elif page == "galeria":
                 return redirect("/inseregaleria")
+            elif page == "video":
+                return redirect("/videopage")
             else:
                 return redirect("/att")
     else:
@@ -105,7 +107,6 @@ def insere_gal():
             return render_template('inseregaleria.html',imagem=imagem_base64,listaimg=msl.lista_galeria())
         else:
             return render_template('inseregaleria.html',imagem='',listaimg=msl.lista_galeria())
-        
 
 @app.route("/atualizagaleria", methods=['POST'])
 def atualizagaleria():
@@ -127,7 +128,10 @@ def deleteimg():
 
     return 'ok'
 
-    
+@app.route("/dicas", methods=['GET'])
+def dicas():
+    dicas = msl.gera_dicas()
+    return render_template('dicas.html', dicas=dicas)
 
 @app.route("/att", methods=['POST','GET'])
 def attinsert():
@@ -157,6 +161,27 @@ def attinsert():
                     caminho_pdf = os.path.join(app.config['UPLOAD_FOLDER'], 'Nuance.pdf')
                     pdf_file.save(caminho_pdf)
         return render_template('atualizatabelas.html')
+    
+@app.route("/videopage", methods=['GET','POST'])
+def video_page():
+    if session.get('admin') == 0:
+        return redirect("/admin")
+    else:
+        if request.method == 'POST':
+            imagem = request.files['imagem']
+            imagem_base64 = base64.b64encode(imagem.read()).decode('utf-8')
+            link_video = request.form.get('linkvideo')
+            msl.insere_dicas(link_video,imagem_base64)
+            return render_template('video.html',imagem=imagem_base64,dicascad=msl.lista_dicas())
+        else:
+            return render_template('video.html',imagem='',dicascad=msl.lista_dicas())
+        
+@app.route("/deletevideo", methods=['POST'])
+def delete_video():
+    result = request.json
+    id = result.get('id')
+    msl.delete_dicas(id)
+    return 'ok'
 
 if __name__ == "__main__":
     app.run(debug=True,port=8000)

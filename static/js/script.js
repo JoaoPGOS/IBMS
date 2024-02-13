@@ -17,6 +17,9 @@ function pararRolagem() {
     clearInterval(intervalo);
 }
 
+function dicaslink(){
+    window.location.replace('/dicas')
+}
 
 function galerialink(){
     window.location.replace('/galeria')
@@ -169,3 +172,26 @@ function deleteimg(id) {
     });
 }
 
+function deletedicas(id){
+    var data = {
+        id: id
+    };
+    fetch('/deletevideo', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (response.ok) {
+
+            window.location.href = window.location.href;
+        } else {
+            console.error('Erro ao excluir a imagem');
+        }
+    })
+    .catch(error => {
+        console.error('Erro na solicitação:', error);
+    });
+}
