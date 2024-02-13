@@ -392,38 +392,21 @@ body::-webkit-scrollbar-thumb {
     }
 }
 
-.contentgaleria{
+.contentgaleria .galeri{
     display: flex;
     flex-wrap: wrap;
     margin-top: 200px;
     gap: 2rem;
     justify-content: center;
 }
-.carrossel {
-    width: 100%; /* Ocupa toda a largura do container pai */
-    overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse a largura do carrossel */
-    position: relative; /* Define o contexto de posicionamento para os elementos filhos */
-    height: 520px; /* Ajuste conforme necessário */
 
-}
-
-.carrossel img {
-    width: 450px !important; /* Ocupa toda a largura do carrossel */
-    height: 490px !important; /* Mantém a proporção da imagem */
-    position: absolute; /* Permite o posicionamento relativo ao carrossel */
-    top: 0; /* Alinha as imagens ao topo do carrossel */
-    left: 0; /* Alinha as imagens à esquerda do carrossel */
-    opacity: 1; /* Garante que as imagens sejam visíveis */
-    transition: opacity 0.5s ease; /* Adiciona uma transição suave para a propriedade opacity */
-
-}
-.contentgaleria img{
+.contentgaleria .galeri img{
     width: 300px !important;
     height: 320px !important; 
     transition: .5s;
 }
 
-.contentgaleria img:hover{
+.contentgaleria .galeri img:hover{
     width: 300px;
     height: 320px;
     opacity: 0.9;
@@ -433,38 +416,46 @@ body::-webkit-scrollbar-thumb {
     font-size: 22px;
 
 }
+.carrossel{
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    align-content: center;
+}
+.carrossel img{
+    width: 0px;
+    height: 440px;
 
+}
+.title{
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+    color: var(--color-primary);
+    font-weight: bold;
+    text-align: center;
+}
 
 @media only screen and (min-width: 800px) {
 
-    .contentgaleria img{
+    .contentgaleria .galeri img{
         width: 400px !important;
         height: 420px !important;
         transition: .5s;
     }
-    .contentgaleria h3{
-        font-size: 40px;
-        margin-right: 500px;
-        margin-left: 50px;
-    }
-    .contentgaleria img:hover{
+    .contentgaleria .galeri img:hover{
         width: 400px !important;
         height: 420px !important;
         opacity: 0.9;
         transition: .5s;
     }
-    .carrossel {
-        width: 600px; /* Ajuste conforme necessário */
-        overflow: hidden;
-        position: relative; /* Necessário para posicionar as imagens */
-        height: 540px;
-      }
-      
-    .carrossel img {
-        width: 200px; /* Ajuste conforme necessário */
-        position: absolute; /* Permite o posicionamento relativo ao carrossel */
-        transition: transform 0.5s ease; /* Adiciona uma transição suave de 0.5 segundos ao transform */
-      }
+    .carrossel img{
+        width: 0px;
+        height: 440px;
+    }
+
 }
 
 .prodcontainer{
