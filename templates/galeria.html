@@ -27,12 +27,17 @@
               </svg></a>
         </div>
     </div>
+    <br><br>
+    <br><br>
+    <h3 class="title">Cabelos bonitos, são cabelos tratados!</h3>
     <div class="contentgaleria">
-        <h3>Cabelos bonitos, são cabelos tratados!</h3>
+        
         <div class="carrossel">
             {{carrossel | safe}}
         </div>
+        <div class="galeri">
         {{galeria | safe}}
+    </div>
     </div>
 </body>
 <script>
@@ -44,9 +49,11 @@ document.addEventListener('DOMContentLoaded', function () {
   let indiceAtual = 0;
 
   setInterval(function () {
-    imagens[indiceAtual].style.transform = 'translateX(-100%)';
+    imagens[indiceAtual].style.transition = '.5s';
+    imagens[indiceAtual].style.width = '0px';
     indiceAtual = (indiceAtual + 1) % imagens.length;
-    imagens[indiceAtual].style.transform = 'translateX(0)';
+    imagens[indiceAtual].style.transition = '.5s';
+    imagens[indiceAtual].style.width = '440px';
   }, intervalo);
 });
 
