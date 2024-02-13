@@ -311,25 +311,6 @@ body::-webkit-scrollbar-thumb {
 
 }
 
-
-#title{
-    font-family: "Poppins", sans-serif;
-    font-size: 20px;
-    color: var(--color-primary);
-    width: fit-content;
-    border-radius: 10px;
-    padding: 10px;
-    display: flex;
-    align-self: center;
-    width: 300px;
-    background: linear-gradient(45deg,#00E3CC,#32A89C,#009688,#44E3D3);
-    background-size: 400% 100%;
-    animation: degretitle 10s linear infinite alternate;
-
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
 @media only screen and (min-width: 800px) {
     #title{
         font-size: 30px;
@@ -873,4 +854,47 @@ body::-webkit-scrollbar-thumb {
 }
 .saibamais{
     font-weight: bold;
+}
+.imgprincipal{
+    position: relative;
+    display: inline-block;
+}
+#title{
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    position: absolute;
+    top: 0;
+    right: 0; 
+    color: var(--color-primary);
+    border-radius: 10px;
+    padding: 20px 20px;
+    width: 150px;
+    background: linear-gradient(45deg,#00fde4,#3bc9bb,#00ad9c,#12ffe7);
+    background-size: 400% 100%;
+    animation: degretitle 10s linear infinite alternate;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+@media only screen and (min-width: 800px) {
+    #title{
+        font-family: "Poppins", sans-serif;
+        font-size: 75px;
+        position: absolute;
+        top: 0;
+        right: 0; 
+        color: var(--color-primary);
+        border-radius: 10px;
+        padding: 30px 150px;
+        width: 600px;
+        background: linear-gradient(45deg,#00E3CC,#32A89C,#009688,#44E3D3);
+        background-size: 400% 100%;
+        animation: degretitle 10s linear infinite alternate;
+    
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    
+    }
+
 }
