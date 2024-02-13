@@ -401,26 +401,26 @@ body::-webkit-scrollbar-thumb {
 }
 .contentgaleria img{
     width: 300px;
-    height: 300px;
+    height: 330px;
     transition: .5s;
 }
 
 .contentgaleria img:hover{
-    width: 320px;
-    height: 340px;
+    width: 300px;
+    height: 330px;
     opacity: 0.9;
     transition: .5s;
 }
 @media only screen and (min-width: 800px) {
     .contentgaleria img{
         width: 400px !important;
-        height: 420px !important;
+        height: 430px !important;
         transition: .5s;
     }
     
     .contentgaleria img:hover{
-        width: 420px !important;
-        height: 440px !important;
+        width: 400px !important;
+        height: 430px !important;
         opacity: 0.9;
         transition: .5s;
     }
