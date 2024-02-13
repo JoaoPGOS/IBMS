@@ -418,8 +418,13 @@ body::-webkit-scrollbar-thumb {
 
 }
 .contentgaleria img{
+<<<<<<< HEAD
     width: 300px;
     height: 320px; 
+=======
+    width: 350px !important;
+    height: 370px !important; 
+>>>>>>> d259b6277077416157d31ab3c98b22f341d7096a
     transition: .5s;
 }
 
