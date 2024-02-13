@@ -52,7 +52,7 @@ background-color: var(--color-1);
 }
 .navbar a:hover{
     transition: .5s;
-    background: linear-gradient(45deg,#00E3CC,#32A89C,#009688,#44E3D3);
+    background: linear-gradient(45deg,#ECECEC,#a0a0a0,#d5ffff);
     background-size: 400% 100%;
     animation: degretitle 10s linear infinite alternate;
 
@@ -61,7 +61,7 @@ background-color: var(--color-1);
 }
 .active{
 
-    background: linear-gradient(45deg,#00E3CC,#32A89C,#009688,#44E3D3);
+    background: linear-gradient(45deg,#ECECEC,#a0a0a0,#d5ffff);
     background-size: 400% 100%;
     animation: degretitle 10s linear infinite alternate;
 
@@ -132,7 +132,7 @@ background-color: var(--color-1);
     writing-mode: vertical-rl;
     font-size: 30px;
     padding-top: 10px;
-    background: linear-gradient(45deg,#00E3CC,#32A89C,#009688,#44E3D3);
+    background: linear-gradient(45deg,#ECECEC,#a0a0a0,#d5ffff);
     background-size: 400% 100%;
     animation: degretitle 10s linear infinite alternate;
 
@@ -314,7 +314,7 @@ body::-webkit-scrollbar-thumb {
 
 #title{
     font-family: "Poppins", sans-serif;
-    font-size: 50px;
+    font-size: 20px;
     color: var(--color-primary);
     width: fit-content;
     border-radius: 10px;
@@ -332,6 +332,7 @@ body::-webkit-scrollbar-thumb {
 
 @media only screen and (min-width: 800px) {
     #title{
+        font-size: 30px;
         width: 500px;
     }
 }
