@@ -413,14 +413,14 @@ body::-webkit-scrollbar-thumb {
 }
 @media only screen and (min-width: 800px) {
     .contentgaleria img{
-        width: 400px;
-        height: 420px;
+        width: 400px !important;
+        height: 420px !important;
         transition: .5s;
     }
     
     .contentgaleria img:hover{
-        width: 420px;
-        height: 440px;
+        width: 420px !important;
+        height: 440px !important;
         opacity: 0.9;
         transition: .5s;
     }
