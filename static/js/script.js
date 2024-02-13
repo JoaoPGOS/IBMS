@@ -95,20 +95,22 @@ function insert_to(name,desc){
 
 function updateimg(id) {
     var imgInput = document.getElementById(`imgupdate_${id}`);
-    var videoInput = document.getElementById(`videolink_${id}`);
     var imgFile = imgInput.files[0];
-    var videoLink = videoInput.value;
+    var selectCarrossel = document.getElementById(`carrossel_${id}`);
+    var carrossel = selectCarrossel.value; // Obtém o valor selecionado no select
 
     var reader = new FileReader();
 
-
     reader.onloadend = function() {
+        var base64Img = '';
 
-        var base64Img = reader.result.split(',')[1]; 
+        if (reader.result) {
+            base64Img = reader.result.split(',')[1];
+        }
 
         var data = {
-            img: base64Img || "", 
-            video: videoLink,
+            img: base64Img, 
+            carrossel: carrossel,
             id: id
         };
 
@@ -132,15 +134,14 @@ function updateimg(id) {
         });
     };
 
-
     if (imgFile) {
-
         reader.readAsDataURL(imgFile);
     } else {
-
         reader.onloadend();
     }
 }
+
+
 
 function deleteimg(id) {
 
@@ -158,7 +159,7 @@ function deleteimg(id) {
     .then(response => {
         if (response.ok) {
 
-           window.location.reload();
+            window.location.href = window.location.href;
         } else {
             console.error('Erro ao excluir a imagem');
         }

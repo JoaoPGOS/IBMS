@@ -31,7 +31,8 @@ def contato():
 
 @app.route("/galeria")
 def galeria():
-    return render_template('galeria.html', galeria=msl.gera_galeria())
+    galeria = msl.gera_galeria()
+    return render_template('galeria.html', galeria=galeria[0], carrossel=galeria[1])
 
 @app.route("/servicos")
 def servico():
@@ -96,11 +97,11 @@ def insere_gal():
         if request.method == 'POST':
             imagem = request.files['imagem']
             imagem_base64 = base64.b64encode(imagem.read()).decode('utf-8')
-            video = request.form.get("link")
+            carrossel = request.form.get("carrossel")
         else:
             imagem_base64 = ''
         if imagem_base64 != '':
-            msl.insere_galeria(imagem_base64, video)
+            msl.insere_galeria(imagem_base64, carrossel)
             return render_template('inseregaleria.html',imagem=imagem_base64,listaimg=msl.lista_galeria())
         else:
             return render_template('inseregaleria.html',imagem='',listaimg=msl.lista_galeria())
@@ -112,10 +113,9 @@ def atualizagaleria():
     data = request.json
     
     img = data.get('img')
-    video = data.get('video')
+    carrossel = data.get('carrossel')
     id = data.get('id')
-    print(img, video, id)
-    msl.atualiza_galeria(img, video, id)
+    msl.atualiza_galeria(img, carrossel, id)
     return 'ok'
     
 @app.route("/deleteimg", methods=['POST'])

@@ -20,7 +20,10 @@
             Adicionar Imagem a Galeria
             <input type="file" name="imagem">
             <input type="file" name="arquivo" style="display: none;">
-            <input type="text" name="link" placeholder="Inserir o link aqui">
+            <select name="carrossel" id="">
+                <option value="np">Página</option>
+                <option value="carrossel">Carrossel</option>
+            </select>
             <input type="submit" value="Adicionar Imagem" name="submit_serv">
         </form>
         <img src="data:image/jpeg;base64,{{imagem}}" alt="" width="400px" >

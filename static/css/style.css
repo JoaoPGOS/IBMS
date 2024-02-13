@@ -396,34 +396,75 @@ body::-webkit-scrollbar-thumb {
     display: flex;
     flex-wrap: wrap;
     margin-top: 200px;
-    gap: 6rem;
+    gap: 2rem;
     justify-content: center;
 }
+.carrossel {
+    width: 100%; /* Ocupa toda a largura do container pai */
+    overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse a largura do carrossel */
+    position: relative; /* Define o contexto de posicionamento para os elementos filhos */
+    height: 520px; /* Ajuste conforme necessário */
+
+}
+
+.carrossel img {
+    width: 500px !important; /* Ocupa toda a largura do carrossel */
+    height: 520px !important; /* Mantém a proporção da imagem */
+    position: absolute; /* Permite o posicionamento relativo ao carrossel */
+    top: 0; /* Alinha as imagens ao topo do carrossel */
+    left: 0; /* Alinha as imagens à esquerda do carrossel */
+    opacity: 1; /* Garante que as imagens sejam visíveis */
+    transition: opacity 0.5s ease; /* Adiciona uma transição suave para a propriedade opacity */
+
+}
 .contentgaleria img{
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 420px;
     transition: .5s;
 }
 
 .contentgaleria img:hover{
-    width: 320px;
-    height: 340px;
+    width: 400px;
+    height: 420px;
     opacity: 0.9;
     transition: .5s;
 }
+.contentgaleria h3{
+    font-size: 22px;
+
+}
+
+
 @media only screen and (min-width: 800px) {
+
     .contentgaleria img{
-        width: 400px;
-        height: 420px;
+        width: 400px !important;
+        height: 420px !important;
         transition: .5s;
     }
-    
+    .contentgaleria h3{
+        font-size: 40px;
+        margin-right: 500px;
+        margin-left: 50px;
+    }
     .contentgaleria img:hover{
-        width: 420px;
-        height: 440px;
+        width: 400px !important;
+        height: 420px !important;
         opacity: 0.9;
         transition: .5s;
     }
+    .carrossel {
+        width: 600px; /* Ajuste conforme necessário */
+        overflow: hidden;
+        position: relative; /* Necessário para posicionar as imagens */
+        height: 540px;
+      }
+      
+    .carrossel img {
+        width: 200px; /* Ajuste conforme necessário */
+        position: absolute; /* Permite o posicionamento relativo ao carrossel */
+        transition: transform 0.5s ease; /* Adiciona uma transição suave de 0.5 segundos ao transform */
+      }
 }
 
 .prodcontainer{

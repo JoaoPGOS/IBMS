@@ -28,7 +28,27 @@
         </div>
     </div>
     <div class="contentgaleria">
-        {{galeria | safe}}
+        <h3>Cabelos bonitos, são cabelos tratados!</h3>
+        <div class="carrossel">
+            {{carrossel | safe}}
         </div>
+        {{galeria | safe}}
+    </div>
 </body>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const carrossel = document.querySelector('.carrossel');
+  const imagens = carrossel.querySelectorAll('img');
+  const intervalo = 2000; // 2 segundos
+
+  let indiceAtual = 0;
+
+  setInterval(function () {
+    imagens[indiceAtual].style.transform = 'translateX(-100%)';
+    indiceAtual = (indiceAtual + 1) % imagens.length;
+    imagens[indiceAtual].style.transform = 'translateX(0)';
+  }, intervalo);
+});
+
+</script>
 </html>

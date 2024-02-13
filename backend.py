@@ -263,7 +263,7 @@ def gera_prod_list():
     except mysql.connector.Error as err:
         print(f"Erro na conexão: {err}")
 
-def insere_galeria(imagem, video):
+def insere_galeria(imagem, carrossel):
     import mysql.connector
 
 
@@ -284,7 +284,7 @@ def insere_galeria(imagem, video):
         print("Conexão bem-sucedida!")
 
         cursor = conn.cursor()
-        cursor.execute(f"INSERT INTO Galeria VALUES(0,'','{imagem}','{video}')")
+        cursor.execute(f"INSERT INTO Galeria VALUES(0,'{carrossel}','{imagem}')")
 
         conn.commit()
 
@@ -319,11 +319,19 @@ def gera_galeria():
         table = cursor.fetchall()
 
         galeria = ''
-
+        carrossel = ''
+        galeria_list = []
         for row in table:
-            galeria+=f"<a href='{row[3]}'><img src='data:image/jpeg;base64,{row[2]}' target='_blank'></a>"
+            if row[1] == 'carrossel':
+                carrossel += f"<img src='data:image/jpeg;base64,{row[2]}'>"
+            else:
+                galeria+=f"<img src='data:image/jpeg;base64,{row[2]}'>"
         conn.close()
-        return galeria
+
+        galeria_list.append(galeria)
+        galeria_list.append(carrossel)
+
+        return galeria_list
     except mysql.connector.Error as err:
         print(f"Erro na conexão: {err}")
         return 'falha'
@@ -354,14 +362,17 @@ def lista_galeria():
         lista_galeria = ''
 
         for row in table:
-            lista_galeria+=f"<div><img src='data:image/jpeg;base64,{row[2]}'><input type='file' name='imgupdate' id='imgupdate_{row[0]}'><input type='text' name='videolink' id='videolink_{row[0]}' placeholder='Insira o link para o vídeo aqui'><button type='button' id='{row[0]}' onclick='updateimg(this.id)'>Atualizar</button><button type='button' id='{row[0]}' onclick='deleteimg(this.id)'>Deletar</button></div><br>"
+            if row[1] == "carrossel":
+                lista_galeria+=f"<div><img src='data:image/jpeg;base64,{row[2]}'><input type='file' name='imgupdate' id='imgupdate_{row[0]}'><select name='carrossel' id='carrossel_{row[0]}'><option value='carrossel'>Carrossel</option><option value=''>Página</option></select><button type='button' id='{row[0]}' onclick='updateimg(this.id)'>Atualizar</button><button type='button' id='{row[0]}' onclick='deleteimg(this.id)'>Deletar</button></div><br>"
+            else:
+                lista_galeria+=f"<div><img src='data:image/jpeg;base64,{row[2]}'><input type='file' name='imgupdate' id='imgupdate_{row[0]}'><select name='carrossel' id='carrossel_{row[0]}'><option value=''>Página</option><option value='carrossel'>Carrossel</option></select><button type='button' id='{row[0]}' onclick='updateimg(this.id)'>Atualizar</button><button type='button' id='{row[0]}' onclick='deleteimg(this.id)'>Deletar</button></div><br>"
         conn.close()
         return lista_galeria
     except mysql.connector.Error as err:
         print(f"Erro na conexão: {err}")
         return 'falha'
     
-def atualiza_galeria(img, video, id):
+def atualiza_galeria(img, carrossel, id):
     import mysql.connector
 
 
@@ -381,11 +392,11 @@ def atualiza_galeria(img, video, id):
         )
 
         cursor = conn.cursor()
-        if img != '' and video != '':
-            cursor.execute("UPDATE Galeria SET imagem = %s, video = %s WHERE id = %s", (img, video, id))
+        if img != '' and carrossel != 'np':
+            cursor.execute("UPDATE Galeria SET imagem = %s, name = %s WHERE id = %s", (img, carrossel, id))
             print('a')
-        elif img == '' and video != '':
-            cursor.execute("UPDATE Galeria SET video = %s WHERE id = %s", (video, id))
+        elif img == '' and carrossel != 'np':
+            cursor.execute("UPDATE Galeria SET name = %s WHERE id = %s", (carrossel, id))
             print('b')
         else:
             cursor.execute("UPDATE Galeria SET imagem = %s WHERE id = %s", (img, id))
