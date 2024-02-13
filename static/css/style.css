@@ -345,7 +345,7 @@ body::-webkit-scrollbar-thumb {
 
 .caixa img{
     border: 2px solid var(--color-blue_1);
-    width: 338px;
+    width: 600px;
     height: 600px;
 }
 .listaimg{
@@ -400,18 +400,31 @@ body::-webkit-scrollbar-thumb {
     justify-content: center;
 }
 .contentgaleria img{
-    width: 338px;
-    height: 600px;
+    width: 300px;
+    height: 300px;
     transition: .5s;
 }
 
 .contentgaleria img:hover{
-    width: 358px;
-    height: 620px;
+    width: 320px;
+    height: 340px;
     opacity: 0.9;
     transition: .5s;
 }
-
+@media only screen and (min-width: 800px) {
+    .contentgaleria img{
+        width: 400px;
+        height: 420px;
+        transition: .5s;
+    }
+    
+    .contentgaleria img:hover{
+        width: 420px;
+        height: 440px;
+        opacity: 0.9;
+        transition: .5s;
+    }
+}
 
 .prodcontainer{
     display: flex;
