@@ -17,17 +17,8 @@ function pararRolagem() {
     clearInterval(intervalo);
 }
 
-function dicaslink(){
-    window.location.replace('/dicas')
-}
 
-function galerialink(){
-    window.location.replace('/galeria')
-}
 
-function downloadslink(){
-        window.location.replace('/downloads')
-}
 function produtoslink(){
     document.getElementById('produtos').click();
 }
@@ -36,9 +27,6 @@ function servicoslink(){
     document.getElementById('servicos').click();
 }
 
-function portlink(){
-    window.location.replace('/portifolio')
-}
 
 
 
