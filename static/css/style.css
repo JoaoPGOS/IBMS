@@ -408,8 +408,8 @@ body::-webkit-scrollbar-thumb {
 }
 
 .carrossel img {
-    width: 400px !important; /* Ocupa toda a largura do carrossel */
-    height: 420px !important; /* Mantém a proporção da imagem */
+    width: 450px !important; /* Ocupa toda a largura do carrossel */
+    height: 490px !important; /* Mantém a proporção da imagem */
     position: absolute; /* Permite o posicionamento relativo ao carrossel */
     top: 0; /* Alinha as imagens ao topo do carrossel */
     left: 0; /* Alinha as imagens à esquerda do carrossel */
@@ -418,14 +418,14 @@ body::-webkit-scrollbar-thumb {
 
 }
 .contentgaleria img{
-    width: 350px;
-    height: 370px;
+    width: 300px;
+    height: 320px; 
     transition: .5s;
 }
 
 .contentgaleria img:hover{
-    width: 350px;
-    height: 370px;
+    width: 300px;
+    height: 320px;
     opacity: 0.9;
     transition: .5s;
 }
