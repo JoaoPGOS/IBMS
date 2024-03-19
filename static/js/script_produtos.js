@@ -205,6 +205,7 @@ function filtroBurana(){
     var fluenceElements = document.querySelectorAll('.Fluence');
     var BuranaElements = document.querySelectorAll('.Burana');
 
+    
     if (BuranaElements.length > 0) {
         for (var i = 0; i < BuranaElements.length; i++) {
             BuranaElements[i].style.display = 'block';
