@@ -160,6 +160,11 @@ def attinsert():
                 if pdf_file.filename != '' and allowed_file(pdf_file.filename):
                     caminho_pdf = os.path.join(app.config['UPLOAD_FOLDER'], 'Nuance.pdf')
                     pdf_file.save(caminho_pdf)
+            if 'Burana_file' in request.files:
+                pdf_file = request.files['Burana_file']
+                if pdf_file.filename != '' and allowed_file(pdf_file.filename):
+                    caminho_pdf = os.path.join(app.config['UPLOAD_FOLDER'], 'Burana.pdf')
+                    pdf_file.save(caminho_pdf)
         return render_template('atualizatabelas.html')
     
 @app.route("/videopage", methods=['GET','POST'])

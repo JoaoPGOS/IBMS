@@ -20,6 +20,12 @@ document.getElementById('downloadExcelFluence').addEventListener('click', functi
     downloadFile('/static/archives/Fluence2.pdf');
 });
 
+document.getElementById('downloadBurana').addEventListener('click', function() {
+
+    var url = '/static/archives/Burana.pdf';
+    downloadFile(url);
+});
+
 
 function downloadFile(fileUrl) {
     // Cria um elemento de link temporário
@@ -97,7 +103,13 @@ function filtroProhair(){
     var proHairElements = document.querySelectorAll('.ProHair');
     var nuanceElements = document.querySelectorAll('.Nuance');
     var fluenceElements = document.querySelectorAll('.Fluence');
+    var BuranaElements = document.querySelectorAll('.Burana');
 
+    if (BuranaElements.length > 0) {
+        for (var i = 0; i < BuranaElements.length; i++) {
+            BuranaElements[i].style.display = 'none';
+        }
+    }
     if (proHairElements.length > 0) {
         for (var i = 0; i < proHairElements.length; i++) {
             proHairElements[i].style.display = 'block';
@@ -117,13 +129,20 @@ function filtroProhair(){
     document.getElementById('fluence_bt').style.border = 'none'
     document.getElementById('pro_hair').style.border = '2px var(--color-blue_2) solid'
     document.getElementById('nuance_bt').style.border = 'none'
+    document.getElementById('Burana_bt').style.border = 'none'
 }
 
 function filtroFluence(){
     var proHairElements = document.querySelectorAll('.ProHair');
     var nuanceElements = document.querySelectorAll('.Nuance');
     var fluenceElements = document.querySelectorAll('.Fluence');
+    var BuranaElements = document.querySelectorAll('.Burana');
 
+    if (BuranaElements.length > 0) {
+        for (var i = 0; i < BuranaElements.length; i++) {
+            BuranaElements[i].style.display = 'none';
+        }
+    }
     if (fluenceElements.length > 0) {
         for (var i = 0; i < fluenceElements.length; i++) {
             fluenceElements[i].style.display = 'block';
@@ -144,13 +163,20 @@ function filtroFluence(){
     document.getElementById('fluence_bt').style.border = '2px var(--color-blue_2) solid'
     document.getElementById('nuance_bt').style.border = 'none'
     document.getElementById('pro_hair').style.border = 'none'
+    document.getElementById('Burana_bt').style.border = 'none'
 }
 
 function filtroNuance(){
     var proHairElements = document.querySelectorAll('.ProHair');
     var nuanceElements = document.querySelectorAll('.Nuance');
     var fluenceElements = document.querySelectorAll('.Fluence');
+    var BuranaElements = document.querySelectorAll('.Burana');
 
+    if (BuranaElements.length > 0) {
+        for (var i = 0; i < BuranaElements.length; i++) {
+            BuranaElements[i].style.display = 'none';
+        }
+    }
     if (proHairElements.length > 0) {
         for (var i = 0; i < proHairElements.length; i++) {
             proHairElements[i].style.display = 'none';
@@ -170,6 +196,40 @@ function filtroNuance(){
     document.getElementById('pro_hair').style.border = 'none'
     document.getElementById('nuance_bt').style.border = '2px var(--color-blue_2) solid'
     document.getElementById('fluence_bt').style.border = 'none'
+    document.getElementById('Burana_bt').style.border = 'none'
+}
+
+function filtroBurana(){
+    var proHairElements = document.querySelectorAll('.ProHair');
+    var nuanceElements = document.querySelectorAll('.Nuance');
+    var fluenceElements = document.querySelectorAll('.Fluence');
+    var BuranaElements = document.querySelectorAll('.Burana');
+
+    if (BuranaElements.length > 0) {
+        for (var i = 0; i < BuranaElements.length; i++) {
+            BuranaElements[i].style.display = 'block';
+        }
+    }
+    if (proHairElements.length > 0) {
+        for (var i = 0; i < proHairElements.length; i++) {
+            proHairElements[i].style.display = 'none';
+        }
+    }
+
+    if (nuanceElements.length > 0) {
+        for (var i = 0; i < nuanceElements.length; i++) {
+            nuanceElements[i].style.display = 'none';
+        }
+    }
+    if (fluenceElements.length > 0) {
+        for (var i = 0; i < fluenceElements.length; i++) {
+            fluenceElements[i].style.display = 'none';
+        }
+    }
+    document.getElementById('pro_hair').style.border = 'none'
+    document.getElementById('Burana_bt').style.border = '2px var(--color-blue_2) solid'
+    document.getElementById('fluence_bt').style.border = 'none'
+    document.getElementById('nuance_bt').style.border = 'none'
 }
 
 function displaydesc(id){
