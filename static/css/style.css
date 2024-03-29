@@ -360,6 +360,10 @@ body::-webkit-scrollbar-thumb {
     border: var(--color-blue_1) 1px solid;
     color: var(--color-blue_1);
 }
+.caixa form #esgotado{
+    border: var(--color-blue_1) 1px solid;
+    color: var(--color-blue_1);
+}
 .caixa div{
     display: flex;
     flex-direction: column;
@@ -451,14 +455,14 @@ body::-webkit-scrollbar-thumb {
 }
 
 .contentgaleria .galeri img{
-    width: 300px !important;
-    height: 320px !important; 
+    width: 200px !important;
+    height: 220px !important; 
     transition: .5s;
 }
 
 .contentgaleria .galeri img:hover{
-    width: 300px;
-    height: 320px;
+    width: 200px;
+    height: 220px;
     opacity: 0.9;
     transition: .5s;
 }
@@ -497,13 +501,13 @@ body::-webkit-scrollbar-thumb {
 @media only screen and (min-width: 800px) {
 
     .contentgaleria .galeri img{
-        width: 400px !important;
-        height: 420px !important;
+        width: 300px !important;
+        height: 320px !important;
         transition: .5s;
     }
     .contentgaleria .galeri img:hover{
-        width: 400px !important;
-        height: 420px !important;
+        width: 300px !important;
+        height: 320px !important;
         opacity: 0.9;
         transition: .5s;
     }
@@ -660,10 +664,10 @@ body::-webkit-scrollbar-thumb {
     width: 300px;
 }
 .pd #pesquisa{
-    color: var(--color-1);
-    background-color: var(--color-text);
+    color: var(--color-primary);
+    background-color: white;
     border-radius: 10px;
-    border: none;
+    border: 2px solid var(--color-blue_2);
     padding: 10px;
 
 }
@@ -696,6 +700,16 @@ body::-webkit-scrollbar-thumb {
     font-size: 20px;
     font-weight: bolder;
     background: linear-gradient(45deg,#00E3CC,#32A89C,#009688,#44E3D3);
+    background-size: 400% 100%;
+    animation: degretitle 10s linear infinite alternate;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.prod_name span{
+    font-size: 20px;
+    font-weight: bold;
+    background: linear-gradient(45deg, #ff9b9b, #FF6666, #FF3333, #FF0000);
     background-size: 400% 100%;
     animation: degretitle 10s linear infinite alternate;
 
@@ -823,6 +837,36 @@ body::-webkit-scrollbar-thumb {
     background: transparent !important;
 }
 
+.pesquisa_N{
+    display: block;
+    font-size: 15px !important;
+    color: var(--color-primary) !important;
+    background-color: transparent !important;
+    cursor: pointer;
+    padding: 5px !important;
+    transition: .5s;
+}
+.pesquisa_N:hover{
+    background-color: var(--color-blue_1) !important;
+    padding: 8px !important;
+    color: var(--color-blue_3) !important;
+    transition: .5s;
+}
+.pesquisa_S{
+    display: block;
+    font-size: 15px !important;
+    color: var(--color-primary) !important;
+    background-color: transparent !important;
+    cursor: pointer;
+    padding: 5px !important;
+    transition: .5s;
+}
+.pesquisa_S:hover{
+    background-color: var(--color-blue_1) !important;
+    padding: 8px !important;
+    color: var(--color-blue_3) !important;
+    transition: .5s;
+}
 .pesquisa{
     display: block;
     font-size: 15px !important;

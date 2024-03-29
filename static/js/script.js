@@ -52,9 +52,49 @@ function promo(p){
     }
 }
 
+function filtrar_esgotados(param){
+    var elementos = document.querySelectorAll('.pesquisa_N');
+
+    if(param == 0){
+        elementos.forEach(function(elemento) {
+            elemento.style.display = 'none';
+        });
+        document.getElementById("produtos_e_filtro").innerHTML = `Produto: <input type="text" name="nome" id="nome" onkeyup="search_esgotados(this.value)" onfocus="displayall()">Descrição: <input type="text" name="descricao" id="desc"><button onclick="filtrar_esgotados(1)" style="margin-left: 1rem; color:var(--color-blue_1); background-color:var(--color-blue_3); border: none; font-weight: bold; cursor:pointer; border-radius: 0px;">Filtrar por esgotados</button>`
+    }else{
+        elementos.forEach(function(elemento) {
+            elemento.style.display = 'block';
+        });
+        document.getElementById("produtos_e_filtro").innerHTML = `Produto: <input type="text" name="nome" id="nome" onkeyup="search(this.value)" onfocus="displayall()">Descrição: <input type="text" name="descricao" id="desc"><button onclick="filtrar_esgotados(0)" style="margin-left: 1rem; color:var(--color-blue_3); background-color:var(--color-blue_1); border: none; font-weight: bold; cursor:pointer; border-radius: 0px;">Filtrar por esgotados</button>`
+    }
+
+    
+}
+
+function search_esgotados(value){
+    creury = document.querySelectorAll('.pesquisa_S')
+    value = value.toUpperCase()
+    for(i=0;i != creury.length;i++){
+        creu = creury[i].id
+        if(creu.toUpperCase().includes(value)==false){
+            document.getElementById(creu).style.display = 'none';
+        }else{
+            document.getElementById(creu).style.display = 'block'
+        }
+    }
+}
 
 function search(value){
-    creury = document.querySelectorAll('.pesquisa')
+    creury = document.querySelectorAll('.pesquisa_N')
+    value = value.toUpperCase()
+    for(i=0;i != creury.length;i++){
+        creu = creury[i].id
+        if(creu.toUpperCase().includes(value)==false){
+            document.getElementById(creu).style.display = 'none';
+        }else{
+            document.getElementById(creu).style.display = 'block'
+        }
+    }
+    creury = document.querySelectorAll('.pesquisa_S')
     value = value.toUpperCase()
     for(i=0;i != creury.length;i++){
         creu = creury[i].id

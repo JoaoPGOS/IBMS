@@ -14,7 +14,7 @@
     <div class="caixa">
         <form action="" method="post" enctype="multipart/form-data">
             Atualizar produtos
-            <p>Produto: <input type="text" name="nome" id="nome" onkeyup="search(this.value)" onfocus="displayall()">Descrição: <input type="text" name="descricao" id="desc"></p>
+            <p id="produtos_e_filtro">Produto: <input type="text" name="nome" id="nome" onkeyup="search(this.value)" onfocus="displayall()">Descrição: <input type="text" name="descricao" id="desc"><button onclick="filtrar_esgotados(0)" style="margin-left: 1rem; color:var(--color-blue_3); background-color:var(--color-blue_1); border: none; font-weight: bold; cursor:pointer; border-radius: 0px;">Filtrar por esgotados</button></p>
             <div id="searched">{{prod_list | safe}}</div>
             <select name="marca" id="marca" onmouseover="changedisplayall()">
                 <option value="ProHair" >Pro Hair</option>
@@ -22,17 +22,23 @@
                 <option value="Fluence" >Fluence</option>
                 <option value="Burana">Burana</option>
             </select>
-            <input type="file" name="arquivo" id="" width="300px" height="300px" onmouseover="changedisplayall()">
-            <p onmouseover="changedisplayall()">Se deseja deletar o produto, insira 1: <input type="text" name="delete" id="" value=""></p>
-            <input type="hidden" value="Não" name="promocao" id="promocao">
+            <p>Produto Esgotado?</p>
+            <select name="esgotado" id="esgotado" onmouseover="changedisplayall()">
+                <option value="N" selected>Não</option>
+                <option value="S" >Sim</option>
+            </select>
+            <br>
+            <p>Insira a imagem: <input type="file" name="arquivo" id="" width="300px" height="300px" onmouseover="changedisplayall()"></p>
+            <p onmouseover="changedisplayall()">Se deseja deletar o produto, insira 1: <input type="text" name="delete" id="" value="" style="width: 15px !important; padding: 5px;"></p>
             <input type="submit" value="Atualizar">
         </form>
     <div>
         {{resp}}
         <img src="data:image/jpeg;base64,{{img}}" alt="">
         <p>Produto: {{nomes}}</p>
-        <p>Descrição: {{desc}}</p>
+        <p style="max-width: 304px;">Descrição: {{desc}}</p>
         <p>Marca: {{marca}}</p>
+        <p>Esgotado: {{esgotado_template}}</p>
 </div>
 </div>
     <div class="caixa">
@@ -45,7 +51,7 @@
                 <option value="Rosto">Rosto</option>
             </select>
             <input type="file" name="arquivo" style="display: none;">
-            <p>Se deseja deletar o serviço, insira 1: <input type="text" name="delete_serv" id="" value=""></p>
+            <p>Se deseja deletar o serviço, insira 1: <input type="text" name="delete_serv" id="" value="" style="width: 15px !important; padding: 5px;"></p>
             <input type="submit" value="Atualizar" name="submit_serv">
         </form>
     <div>

@@ -1,4 +1,4 @@
-def insere_prod(produto,img,delete,marca,desc):
+def insere_prod(produto,img,delete,marca,desc,esgotado):
     import mysql.connector
 
 
@@ -27,6 +27,7 @@ def insere_prod(produto,img,delete,marca,desc):
         existing_desc = cursor.fetchall()
         for row in existing_desc:
             desc_ = row[4]
+            esgotado_ = row[5]
 
 
         if existing_product:
@@ -34,21 +35,23 @@ def insere_prod(produto,img,delete,marca,desc):
                 cursor.execute(f"DELETE FROM prod_info WHERE name = '{produto}'")
                 resposta = 'Produto Deletado'
             else:
-                if img != '' and desc != desc_:
-
-                    cursor.execute(f"UPDATE prod_info SET image = '{img}', descricao='{desc}' WHERE name = '{produto}'")
+                if img != '' and desc != desc_ and esgotado != esgotado_:
+                    cursor.execute(f"UPDATE prod_info SET image = '{img}', descricao='{desc}', esgotado='{esgotado}' WHERE name = '{produto}'")
                     resposta = 'Descrição e Imagem Atualizadas'
-                elif img == '' and desc != desc_:
+                elif img == '' and desc != desc_ and esgotado == esgotado_:
                     cursor.execute(f"UPDATE prod_info SET descricao='{desc}' WHERE name = '{produto}'")
                     resposta = 'Descrição Atualizada'
-                elif img != '' and desc == desc_:
+                elif img != '' and desc == desc_ and esgotado == esgotado_:
                     cursor.execute(f"UPDATE prod_info SET image = '{img}' WHERE name = '{produto}'")
                     resposta = 'Imagem Atualizada'
+                elif img == '' and desc == desc_ and esgotado != esgotado_:
+                    cursor.execute(f"UPDATE prod_info SET esgotado = '{esgotado}' WHERE name = '{produto}'")
+                    resposta = 'Estoque atualizado'
                 else:
                     resposta = 'Produto sem alterações feitas'
         else:
 
-            cursor.execute(f"INSERT INTO prod_info VALUES(0,'{produto}','{img}','{marca}','{desc}')")
+            cursor.execute(f"INSERT INTO prod_info VALUES(0,'{produto}','{img}','{marca}','{desc}','{esgotado}')")
             resposta = 'Produto Inserido'
 
         conn.commit()
@@ -91,6 +94,10 @@ def gera_produtos():
             image = row[2]
             brand = row[3]
             desc = row[4]
+            if row[5] == "S":
+                esgotado = "<span> Esgotado</span>"
+            else:
+                esgotado = ''
             produtos+=f"""
             <div class='{brand}' id='{name}' onclick='displaydesc(this.id)'>                
 
@@ -100,7 +107,7 @@ def gera_produtos():
                   </svg>
                 <img src="data:image/jpeg;base64,{image}"   alt="">
                 <div class='insidediv'>
-                <p class='prod_name'>{name}</p>
+                <p class='prod_name'>{name}{esgotado}</p>
                 <p class='desc' id='{name}_d'>Descrição:<br>{desc}</p>
                 <p class="pointer" id='{name}' onclick='send(this.id)'><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
                     <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
@@ -255,7 +262,8 @@ def gera_prod_list():
         for row in table_prod:
             nome = row[1]
             desc = row[4]
-            produtos_cadastrados += f"<div class='pesquisa' id='{nome}' onclick=\"insert_to('{nome}', '{desc}')\">{nome}</div>"
+            esgotado = row[5]
+            produtos_cadastrados += f"<div class='pesquisa_{esgotado}' id='{nome}' onclick=\"insert_to('{nome}', '{desc}')\">{nome}</div>"
 
             
 
