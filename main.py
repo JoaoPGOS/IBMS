@@ -1,8 +1,9 @@
 
-from flask import Flask, redirect, render_template, request, session, jsonify
+from flask import Flask, redirect, render_template, request, session, jsonify, url_for
 import base64
 import backend as msl
 import os
+
 
 
 
@@ -18,8 +19,15 @@ def allowed_file(filename):
 
 @app.route("/")
 def home():
-    session['admin'] = 0
-    return render_template('index.html')
+    if session.get('admin'):
+        if session.get('admin') == 1:
+            render_template('index.html')
+        else:
+            session['admin'] = 0
+            return render_template('index.html')
+    else:
+        session['admin'] = 0
+        return render_template('index.html') 
 
 @app.route("/produtos")
 def produtos():
@@ -46,11 +54,9 @@ def downloads():
 @app.route("/admin", methods=['POST', 'GET'])
 def login_admin():
     if request.method == "POST":
-        user = request.form.get('user')
-        password = request.form.get('password')
-        page = request.form.get('page')
-        if user == "admin" and password == "0000":
-            session['admin'] = 1
+        code = request.form.get('code')
+        if session.get('admin') == 1:
+            page = request.form.get('page')
             if page == "inserir":
                 return redirect("/inserir")
             elif page == "galeria":
@@ -59,8 +65,27 @@ def login_admin():
                 return redirect("/videopage")
             else:
                 return redirect("/att")
+        else:
+
+            if code == "":
+                msl.envia_email()
+                return render_template('admin.html', enviado='Um código foi gerado e enviado para o administrador, insira o código para acessar')
+            else:
+                page = request.form.get('page')
+                if msl.verification(code) == True:
+                    session['admin'] = 1
+                    if page == "inserir":
+                        return redirect("/inserir")
+                    elif page == "galeria":
+                        return redirect("/inseregaleria")
+                    elif page == "video":
+                        return redirect("/videopage")
+                    else:
+                        return redirect("/att")
+                else:
+                    return render_template('admin.html', enviado='Código errado')
     else:
-        return render_template('admin.html')
+        return render_template('admin.html', enviado='')
 
 
 @app.route("/inserir", methods=['POST','GET'])

@@ -8,16 +8,16 @@
 <body>
     <div class="caixa">
         <form action="" method="post" enctype="multipart/form-data">
-            <p>Usuário: <input type="text" name="user" id="user"></p>
-            <p>Senha: <input type="password" name="password" id="password"></p>
+            <p>Código: <input type="text" name="code" id="code"></p>
             <select name="page" id="">
                 <option value="inserir">Atualizar Produtos e Serviços</option>
                 <option value="galeria">Atualizar Galeria</option>
                 <option value="catalogo">Atualizar Catálogos</option>
                 <option value="video">Atualizar Página de Dicas</option>
             </select>
-            <input type="submit" value="Entrar">
+            <input type="submit" value="Enviar">
         </form>
+        <p style="color: green;">{{enviado}}</p>
     </div>
 </body>
 </html>

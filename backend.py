@@ -1,3 +1,15 @@
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+import random
+import string
+
+def generate_random_string(length):
+    characters = string.ascii_letters + string.digits
+    return ''.join(random.choice(characters) for i in range(length))
+
+
+
 def insere_prod(produto,img,delete,marca,desc,esgotado):
     import mysql.connector
 
@@ -577,3 +589,56 @@ def delete_dicas(id):
     except mysql.connector.Error as err:
         print(f"Erro na conexão: {err}")
         return 'falha'
+    
+
+def verification(user_code):
+    with open("code.txt", "r") as file:
+        code = file.readline().strip()
+
+    user_code = user_code.replace(" ","")
+    if user_code == code:
+        with open("code.txt", "w") as file:
+            file.write("")
+        return True
+    else:
+        with open("code.txt", "w") as file:
+            file.write("")
+        return False
+
+def envia_email():
+    
+    sender_email = "joaopedrogoncalvesdeoliveirasi@gmail.com"
+    receiver_email = "juniorsouzajp@yahoo.com.br"
+    password = "pkls eiuo zdzp zdqs"
+
+
+    message = MIMEMultipart()
+    message['From'] = sender_email
+    message['To'] = receiver_email
+    message['Subject'] = "Alguém está tentando acessar o painel de admin do site matildesenna.com"
+    random_sequence = generate_random_string(22)
+    with open("code.txt", "w") as file:
+        file.write(random_sequence)
+    body = f"""
+            Tentativa de acesso identificado no painel de admin, para liberar o acesso insira o código na página: {random_sequence} 
+"""
+
+
+    message.attach(MIMEText(body, 'plain'))
+
+    smtp_server = 'smtp.gmail.com'
+    smtp_port = 587
+
+
+    server = smtplib.SMTP(smtp_server, smtp_port)
+    server.starttls()
+
+    server.login(sender_email, password)
+
+    text = message.as_string()
+    server.sendmail(sender_email, receiver_email, text)
+
+    server.quit()
+
+
+
