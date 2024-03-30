@@ -223,3 +223,29 @@ function deletedicas(id){
         console.error('Erro na solicitação:', error);
     });
 }
+
+function deletepromo(id) {
+     
+       var xhr = new XMLHttpRequest();
+
+       xhr.open("POST", "/deletepromo", true);
+
+       xhr.setRequestHeader("Content-Type", "application/json");
+
+       xhr.onreadystatechange = function () {
+           if (xhr.readyState === XMLHttpRequest.DONE) {
+      
+               if (xhr.status === 200) {
+                   window.location.href = '/inserepromo'
+               } else {
+                   console.error("Ocorreu um erro:", xhr.statusText);
+               }
+           }
+       };
+       
+      
+       var data = JSON.stringify(id);
+       
+       
+       xhr.send(data);
+}

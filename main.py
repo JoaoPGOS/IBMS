@@ -19,15 +19,16 @@ def allowed_file(filename):
 
 @app.route("/")
 def home():
+    
     if session.get('admin'):
         if session.get('admin') == 1:
-            render_template('index.html')
+            return render_template('index.html', promo=msl.promo())
         else:
             session['admin'] = 0
-            return render_template('index.html')
+            return render_template('index.html',promo=msl.promo())
     else:
         session['admin'] = 0
-        return render_template('index.html') 
+        return render_template('index.html',promo=msl.promo()) 
 
 @app.route("/produtos")
 def produtos():
@@ -45,7 +46,7 @@ def galeria():
 @app.route("/servicos")
 def servico():
     serv_all = msl.gera_servicos()
-    return render_template('servicos.html',cabelo=serv_all[0],pele=serv_all[1],tratamentos=serv_all[2])
+    return render_template('servicos.html',cabelo=serv_all[0],pele=serv_all[1],tratamentos=serv_all[2],promo=msl.promo())
 
 @app.route("/downloads")
 def downloads():
@@ -63,6 +64,8 @@ def login_admin():
                 return redirect("/inseregaleria")
             elif page == "video":
                 return redirect("/videopage")
+            elif page == "promo":
+                return redirect("/inserepromo")
             else:
                 return redirect("/att")
         else:
@@ -80,6 +83,8 @@ def login_admin():
                         return redirect("/inseregaleria")
                     elif page == "video":
                         return redirect("/videopage")
+                    elif page == "promo":
+                        return redirect("/inserepromo")
                     else:
                         return redirect("/att")
                 else:
@@ -217,6 +222,45 @@ def delete_video():
     id = result.get('id')
     msl.delete_dicas(id)
     return 'ok'
+
+@app.route("/inserepromo", methods=['POST','GET'])
+
+def inserepromo():
+    if request.method == 'POST':
+        imagem = request.files['imagem']
+        imagem_base64 = base64.b64encode(imagem.read()).decode('utf-8')
+        res = msl.insere_promo(imagem_base64)
+        return render_template('inserepromo.html',resposta=res,listaimg=msl.lista_promo(), imagem=imagem_base64)
+    else:
+        return render_template('inserepromo.html',resposta='',listaimg=msl.lista_promo(), imagem='')
+
+@app.route("/deletepromo", methods=['POST','GET'])
+
+def deletepromo():
+
+    import json
+
+    data = request.get_json()
+
+    id = json.loads(data)
+    id = str(id)
+    file_path = "static/archives/promo.json"
+
+    with open(file_path, 'r') as file:
+        data = json.load(file)
+
+
+    if id in data:
+        
+        del data[id]
+
+
+        with open(file_path, 'w') as file:
+            json.dump(data, file)
+    
+    return 'ok'
+
+
 
 if __name__ == "__main__":
     app.run(debug=True,port=8000)

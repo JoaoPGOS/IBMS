@@ -927,3 +927,25 @@ body::-webkit-scrollbar-thumb {
     position: relative;
     display: inline-block;
 }
+
+.promo{
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+.promo img{
+    width: 100%; 
+    max-height: 600px; 
+    max-width: 400px;
+    display: none;
+}
+
+@media only screen and (min-width: 800px) {
+    .promo img{
+        width: 100%; 
+        max-height: 700px; 
+        max-width: 500px;
+        display: none;
+    }
+
+}

@@ -608,27 +608,24 @@ def verification(user_code):
 def envia_email():
     
     sender_email = "joaopedrogoncalvesdeoliveirasi@gmail.com"
-    receiver_email = "juniorsouzajp@yahoo.com.br"
+    receiver_emails = ["thecodeofdavinci@gmail.com"]
     password = "pkls eiuo zdzp zdqs"
-
 
     message = MIMEMultipart()
     message['From'] = sender_email
-    message['To'] = receiver_email
+    message['To'] = ", ".join(receiver_emails)  # Concatenando os endereços de email separados por vírgula
     message['Subject'] = "Alguém está tentando acessar o painel de admin do site matildesenna.com"
     random_sequence = generate_random_string(22)
     with open("code.txt", "w") as file:
         file.write(random_sequence)
     body = f"""
             Tentativa de acesso identificado no painel de admin, para liberar o acesso insira o código na página: {random_sequence} 
-"""
-
+    """
 
     message.attach(MIMEText(body, 'plain'))
 
     smtp_server = 'smtp.gmail.com'
     smtp_port = 587
-
 
     server = smtplib.SMTP(smtp_server, smtp_port)
     server.starttls()
@@ -636,9 +633,80 @@ def envia_email():
     server.login(sender_email, password)
 
     text = message.as_string()
-    server.sendmail(sender_email, receiver_email, text)
+    server.sendmail(sender_email, receiver_emails, text)  # Usando receiver_emails em vez de receiver_email
 
     server.quit()
 
+
+
+
+def promo():
+
+    import json
+    import os
+
+    arquivo_json = "static/archives/promo.json"
+
+    promo = ''
+
+    if os.path.exists(arquivo_json) and os.path.getsize(arquivo_json) > 0:
+        with open(arquivo_json, "r") as arquivo:
+            dados = json.load(arquivo)
+
+        for chave, valor in dados.items():
+            promo+=f"<img src='data:image/jpeg;base64,{valor}'>"
+
+    return promo
+
+
+
+
+def insere_promo(img):
+
+    import json
+    import os
+
+    arquivo_json = "static/archives/promo.json"
+    
+    # Verifica se o arquivo JSON existe e não está vazio
+    if os.path.exists(arquivo_json) and os.path.getsize(arquivo_json) > 0:
+        with open(arquivo_json, "r") as arquivo:
+            dados = json.load(arquivo)
+    else:
+        dados = {}
+    
+    # Encontra o maior número de chave presente no dicionário
+    if dados:
+        ultima_chave = max(map(int, dados.keys()))
+        proxima_chave = str(ultima_chave + 1)
+    else:
+        proxima_chave = "0"
+    
+    # Adiciona a imagem à próxima chave disponível
+    dados[proxima_chave] = img
+    
+    # Escreve os dados de volta no arquivo JSON
+    with open(arquivo_json, "w") as arquivo:
+        json.dump(dados, arquivo)
+    
+    return 'Inserido'
+
+def lista_promo():
+
+    import json
+    import os
+
+    arquivo_json = "static/archives/promo.json"
+
+    lista_promo = ''
+
+    if os.path.exists(arquivo_json) and os.path.getsize(arquivo_json) > 0:
+        with open(arquivo_json, "r") as arquivo:
+            dados = json.load(arquivo)
+
+        for chave, valor in dados.items():
+            lista_promo+=f"<div><img src='data:image/jpeg;base64,{valor}'><button id='{chave}' onclick='deletepromo(this.id)'>Apagar</button></div><br>"
+
+    return lista_promo
 
 

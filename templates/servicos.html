@@ -24,6 +24,9 @@
     </div>
     <div class="container">
         <img src="/static/archives/Serviços.png" alt="">
+        <div class="promo">
+            {{promo | safe}}
+        </div>
         <div class="servbox">
             <div class="titleserv">Cabelo</div>
             <div>
@@ -88,4 +91,43 @@
     </div>
 </body>
 <script src="/static/js/script.js"></script>
+<script>
+    function promo_carrossel() {
+        var imagens = document.querySelectorAll('.promo img'); // Seleciona todas as imagens dentro da classe "promo"
+        var indiceAtual = 0;
+    
+        // Esconde todas as imagens
+        for (var i = 0; i < imagens.length; i++) {
+            imagens[i].style.display = 'none';
+        }
+    
+        imagens[indiceAtual].style.display = 'block'; 
+    
+    
+        
+    
+        function avancar() {
+            imagens[indiceAtual].style.display = 'none'; 
+            indiceAtual = (indiceAtual + 1) % imagens.length; 
+            imagens[indiceAtual].style.display = 'block'; 
+            var boundingBox = imagens[indiceAtual].getBoundingClientRect();
+            var largura = boundingBox.width; 
+            var altura = boundingBox.height;
+            
+            if (largura > altura && window.innerWidth > 800) { 
+                imagens[indiceAtual].style.maxWidth = '900px'; 
+            } else {
+                
+                imagens[indiceAtual].style.maxWidth = '500px';
+            }
+            
+            
+        }
+    
+        // Inicia o carrossel, chamando a função avançar a cada 4 segundos
+        setInterval(avancar, 4000);
+    }
+    promo_carrossel()
+    
+    </script>
 </html>
