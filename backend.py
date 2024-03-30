@@ -608,7 +608,7 @@ def verification(user_code):
 def envia_email():
     
     sender_email = "joaopedrogoncalvesdeoliveirasi@gmail.com"
-    receiver_emails = ["thecodeofdavinci@gmail.com"]
+    receiver_emails = ["juniorsouzajp@yahoo.com.br","thecodeofdavinci@gmail.com"]
     password = "pkls eiuo zdzp zdqs"
 
     message = MIMEMultipart()
