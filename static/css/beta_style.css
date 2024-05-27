@@ -1,0 +1,70 @@
+
+*{
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+}
+:root{
+
+    --color-bc: #ECECEC;
+    --color-primary:white;
+    --color-1:#ECECEC;
+    --color-2:#ECECEC;
+    --color-3:#111;
+    --color-text:#363636;
+    --color-navbar:#757575;
+    --color-blue_1:#005954;
+    --color-blue_2:#338b85;
+    --color-blue_3:#d5ffff;
+} 
+
+body{
+background-color: var(--color-1);
+}
+@media only screen and (min-width: 800px) {
+
+    .navbar{
+        
+        display: flex;
+        justify-content: space-between;
+        position: fixed;
+        width: 100%;
+        align-items: center;
+        top: 0px;
+        left: 0px;
+        margin: 0px;
+        padding: 10px;
+        z-index: 2;
+        background-color: var(--color-navbar);
+        
+    }
+    .navbar .navbar-buttons{
+        display: flex;
+        justify-content: space-between;
+        gap: 1.5rem;
+        margin-right: 10rem;
+
+    }
+    .navbar .navbar-buttons a{
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 400;
+        color: var(--color-primary);
+        padding: 5px;
+        transition: .5s;
+        border-radius: 10px;
+    }
+    .navbar .navbar-buttons a:hover, .active{
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 400;
+        color: var(--color-primary);
+        text-align: center;
+        background-color: var(--color-text);
+        padding: 5px;
+        transition: .5s;
+        border-radius: 10px;
+    }
+    .logo{
+        margin-left: 10rem;
+    }
+}
