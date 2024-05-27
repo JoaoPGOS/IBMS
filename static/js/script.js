@@ -19,14 +19,6 @@ function pararRolagem() {
 
 
 
-function produtoslink(){
-    document.getElementById('produtos').click();
-}
-
-function servicoslink(){
-    document.getElementById('servicos').click();
-}
-
 
 
 
