@@ -3,6 +3,8 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import random
 import string
+import mysql.connector as mysql
+
 
 def generate_random_string(length):
     characters = string.ascii_letters + string.digits
@@ -11,7 +13,7 @@ def generate_random_string(length):
 
 
 def insere_prod(produto,img,delete,marca,desc,esgotado):
-    import mysql.connector
+    import mysql
 
 
     host = 'viaduct.proxy.rlwy.net'
@@ -20,7 +22,7 @@ def insere_prod(produto,img,delete,marca,desc,esgotado):
     user = 'root'
     password = 'HhBBh1gGeBegbEAeh-cH45b-1CfG45bc'
     try:
-        conn = mysql.connector.connect(
+        conn = mysql.connect(
             host=host,
             port=port,
             user=user,
@@ -72,11 +74,11 @@ def insere_prod(produto,img,delete,marca,desc,esgotado):
 
         return resposta
 
-    except mysql.connector.Error as err:
+    except mysql.Error as err:
         print(f"Erro na conexão: {err}")
 
 def gera_produtos():
-    import mysql.connector
+    
 
 
     host = 'viaduct.proxy.rlwy.net'
@@ -85,7 +87,7 @@ def gera_produtos():
     user = 'root'
     password = 'HhBBh1gGeBegbEAeh-cH45b-1CfG45bc'
     try:
-        conn = mysql.connector.connect(
+        conn = mysql.connect(
             host=host,
             port=port,
             user=user,
@@ -135,7 +137,7 @@ def gera_produtos():
 
         conn.close()
         return produtos
-    except mysql.connector.Error as err:
+    except mysql.Error as err:
         print(f"Erro na conexão: {err}")
         return 'falha'
 
@@ -143,7 +145,7 @@ def gera_produtos():
 
 
 def insere_serv(servico,classe,delete_serv):
-    import mysql.connector
+    
 
 
     host = 'viaduct.proxy.rlwy.net'
@@ -152,7 +154,7 @@ def insere_serv(servico,classe,delete_serv):
     user = 'root'
     password = 'HhBBh1gGeBegbEAeh-cH45b-1CfG45bc'
     try:
-        conn = mysql.connector.connect(
+        conn = mysql.connect(
             host=host,
             port=port,
             user=user,
@@ -186,11 +188,11 @@ def insere_serv(servico,classe,delete_serv):
 
         return resposta
 
-    except mysql.connector.Error as err:
+    except mysql.Error as err:
         print(f"Erro na conexão: {err}")
 
 def gera_servicos():
-    import mysql.connector
+    
 
 
     host = 'viaduct.proxy.rlwy.net'
@@ -199,7 +201,7 @@ def gera_servicos():
     user = 'root'
     password = 'HhBBh1gGeBegbEAeh-cH45b-1CfG45bc'
     try:
-        conn = mysql.connector.connect(
+        conn = mysql.connect(
             host=host,
             port=port,
             user=user,
@@ -241,13 +243,13 @@ def gera_servicos():
 
         conn.close()
         return servicos_list
-    except mysql.connector.Error as err:
+    except mysql.Error as err:
         print(f"Erro na conexão: {err}")
         return 'falha'
 
 
 def gera_prod_list():
-    import mysql.connector
+    
 
 
     host = 'viaduct.proxy.rlwy.net'
@@ -256,7 +258,7 @@ def gera_prod_list():
     user = 'root'
     password = 'HhBBh1gGeBegbEAeh-cH45b-1CfG45bc'
     try:
-        conn = mysql.connector.connect(
+        conn = mysql.connect(
             host=host,
             port=port,
             user=user,
@@ -280,11 +282,11 @@ def gera_prod_list():
             
 
         return produtos_cadastrados
-    except mysql.connector.Error as err:
+    except mysql.Error as err:
         print(f"Erro na conexão: {err}")
 
 def insere_galeria(imagem, carrossel):
-    import mysql.connector
+    
 
 
     host = 'viaduct.proxy.rlwy.net'
@@ -293,7 +295,7 @@ def insere_galeria(imagem, carrossel):
     user = 'root'
     password = 'HhBBh1gGeBegbEAeh-cH45b-1CfG45bc'
     try:
-        conn = mysql.connector.connect(
+        conn = mysql.connect(
             host=host,
             port=port,
             user=user,
@@ -310,13 +312,13 @@ def insere_galeria(imagem, carrossel):
 
         conn.close()
 
-    except mysql.connector.Error as err:
+    except mysql.Error as err:
         print(f"Erro na conexão: {err}")
 
 
 
 def gera_galeria():
-    import mysql.connector
+    
 
 
     host = 'viaduct.proxy.rlwy.net'
@@ -325,7 +327,7 @@ def gera_galeria():
     user = 'root'
     password = 'HhBBh1gGeBegbEAeh-cH45b-1CfG45bc'
     try:
-        conn = mysql.connector.connect(
+        conn = mysql.connect(
             host=host,
             port=port,
             user=user,
@@ -352,12 +354,12 @@ def gera_galeria():
         galeria_list.append(carrossel)
 
         return galeria_list
-    except mysql.connector.Error as err:
+    except mysql.Error as err:
         print(f"Erro na conexão: {err}")
         return 'falha'
 
 def lista_galeria():
-    import mysql.connector
+    
 
 
     host = 'viaduct.proxy.rlwy.net'
@@ -366,7 +368,7 @@ def lista_galeria():
     user = 'root'
     password = 'HhBBh1gGeBegbEAeh-cH45b-1CfG45bc'
     try:
-        conn = mysql.connector.connect(
+        conn = mysql.connect(
             host=host,
             port=port,
             user=user,
@@ -388,12 +390,12 @@ def lista_galeria():
                 lista_galeria+=f"<div><img src='data:image/jpeg;base64,{row[2]}'><input type='file' name='imgupdate' id='imgupdate_{row[0]}'><select name='carrossel' id='carrossel_{row[0]}'><option value=''>Página</option><option value='carrossel'>Carrossel</option></select><button type='button' id='{row[0]}' onclick='updateimg(this.id)'>Atualizar</button><button type='button' id='{row[0]}' onclick='deleteimg(this.id)'>Deletar</button></div><br>"
         conn.close()
         return lista_galeria
-    except mysql.connector.Error as err:
+    except mysql.Error as err:
         print(f"Erro na conexão: {err}")
         return 'falha'
     
 def atualiza_galeria(img, carrossel, id):
-    import mysql.connector
+    
 
 
     host = 'viaduct.proxy.rlwy.net'
@@ -402,7 +404,7 @@ def atualiza_galeria(img, carrossel, id):
     user = 'root'
     password = 'HhBBh1gGeBegbEAeh-cH45b-1CfG45bc'
     try:
-        conn = mysql.connector.connect(
+        conn = mysql.connect(
             host=host,
             port=port,
             user=user,
@@ -426,12 +428,12 @@ def atualiza_galeria(img, carrossel, id):
         conn.commit()
         conn.close()
         return 'ok'
-    except mysql.connector.Error as err:
+    except mysql.Error as err:
         print(f"Erro na conexão: {err}")
         return 'falha'
     
 def deleteimgfromgalery(id):
-    import mysql.connector
+    
 
 
     host = 'viaduct.proxy.rlwy.net'
@@ -440,7 +442,7 @@ def deleteimgfromgalery(id):
     user = 'root'
     password = 'HhBBh1gGeBegbEAeh-cH45b-1CfG45bc'
     try:
-        conn = mysql.connector.connect(
+        conn = mysql.connect(
             host=host,
             port=port,
             user=user,
@@ -455,12 +457,12 @@ def deleteimgfromgalery(id):
         conn.commit()
         conn.close()
         return 'ok'
-    except mysql.connector.Error as err:
+    except mysql.Error as err:
         print(f"Erro na conexão: {err}")
         return 'falha'
     
 def insere_dicas(link, imagem):
-    import mysql.connector
+    
 
     host = 'viaduct.proxy.rlwy.net'
     port = 58177
@@ -469,7 +471,7 @@ def insere_dicas(link, imagem):
     password = 'HhBBh1gGeBegbEAeh-cH45b-1CfG45bc'
     
     try:
-        conn = mysql.connector.connect(
+        conn = mysql.connect(
             host=host,
             port=port,
             user=user,
@@ -487,13 +489,13 @@ def insere_dicas(link, imagem):
         conn.commit()
         conn.close()
         return 'sucesso'
-    except mysql.connector.Error as err:
+    except mysql.Error as err:
         print(f"Erro na conexão: {err}")
         return 'falha'
 
 
 def gera_dicas():
-    import mysql.connector
+    
 
 
     host = 'viaduct.proxy.rlwy.net'
@@ -502,7 +504,7 @@ def gera_dicas():
     user = 'root'
     password = 'HhBBh1gGeBegbEAeh-cH45b-1CfG45bc'
     try:
-        conn = mysql.connector.connect(
+        conn = mysql.connect(
             host=host,
             port=port,
             user=user,
@@ -522,13 +524,13 @@ def gera_dicas():
         conn.commit()
         conn.close()
         return dicas
-    except mysql.connector.Error as err:
+    except mysql.Error as err:
         print(f"Erro na conexão: {err}")
         return 'falha'  
 
 
 def lista_dicas():
-    import mysql.connector
+    
 
 
     host = 'viaduct.proxy.rlwy.net'
@@ -537,7 +539,7 @@ def lista_dicas():
     user = 'root'
     password = 'HhBBh1gGeBegbEAeh-cH45b-1CfG45bc'
     try:
-        conn = mysql.connector.connect(
+        conn = mysql.connect(
             host=host,
             port=port,
             user=user,
@@ -557,12 +559,12 @@ def lista_dicas():
         conn.commit()
         conn.close()
         return lista_dicas
-    except mysql.connector.Error as err:
+    except mysql.Error as err:
         print(f"Erro na conexão: {err}")
         return 'falha'  
     
 def delete_dicas(id):
-    import mysql.connector
+    
 
 
     host = 'viaduct.proxy.rlwy.net'
@@ -571,7 +573,7 @@ def delete_dicas(id):
     user = 'root'
     password = 'HhBBh1gGeBegbEAeh-cH45b-1CfG45bc'
     try:
-        conn = mysql.connector.connect(
+        conn = mysql.connect(
             host=host,
             port=port,
             user=user,
@@ -586,7 +588,7 @@ def delete_dicas(id):
         conn.commit()
         conn.close()
         return 'ok'
-    except mysql.connector.Error as err:
+    except mysql.Error as err:
         print(f"Erro na conexão: {err}")
         return 'falha'
     
